@@ -1,7 +1,8 @@
 import type { Config } from "tailwindcss";
+import animatePlugin from "tailwindcss-animate";
 
 const config: Config = {
-  darkMode: ["class"],
+  darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -52,22 +53,6 @@ const config: Config = {
         },
       },
       keyframes: {
-        "fade-in-full": {
-          "0%": {
-            opacity: "0.0",
-          },
-          "100%": {
-            opacity: "1.0",
-          },
-        },
-        "fade-in-three-fourth": {
-          "0%": {
-            opacity: "0.0",
-          },
-          "100%": {
-            opacity: "0.75",
-          },
-        },
         "accordion-down": {
           from: {
             height: "0",
@@ -89,8 +74,13 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [animatePlugin],
 };
 export default config;
