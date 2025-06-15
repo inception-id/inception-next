@@ -1,5 +1,11 @@
+import HeroSectionOne from "@/components/hero-section-demo-1";
+
 const Home = async () => {
-  return <div>hoi</div>;
+  return (
+    <div>
+      <HeroSectionOne />
+    </div>
+  );
 };
 
 export default Home;
