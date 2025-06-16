@@ -1,3 +1,5 @@
+import { Navbar } from "./components";
+
 type TInceptionBaseLayout = {
   children: React.ReactNode;
 };
@@ -5,6 +7,7 @@ type TInceptionBaseLayout = {
 const InceptionBaseLayout = ({ children }: TInceptionBaseLayout) => {
   return (
     <div>
+      <Navbar />
       <main>{children}</main>
     </div>
   );

@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
-import Providers from "@/components/providers";
+import { Providers } from "@/components/custom-ui";
+import { Rubik } from "next/font/google";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Navbar } from "./(inception)/components/navbar/navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const rubik = Rubik({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Inception.id | Process, visualize, and analyze your data",
-  description:
-    "Inception.id is data processing, visualization, and analytics company that delivers high-quality web application on demand based on your requested IDEAS and features. ",
-  keywords:
-    "data processing, data visualization, data analytics, AI, Language AI, web application, mobile application",
+  title: "Inception.id",
+  description: "",
+  keywords: "",
 };
 
 export default function RootLayout({
@@ -20,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={rubik.className}>
         <Providers>{children}</Providers>
       </body>
     </html>
