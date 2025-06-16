@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Providers } from "@/components/custom-ui";
 import { Rubik } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "./(inception)/components/navbar/navbar";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
