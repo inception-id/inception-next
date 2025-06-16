@@ -18,7 +18,7 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_HOST_URL: z.string().min(1),
-    NEXT_PUBLIC_GOOGLE_CLIENT_ID: z.string().min(1),
+    NEXT_PUBLIC_GA_ID: z.string(),
     NEXT_PUBLIC_SENTRY_DSN: z.string(),
   },
   /*
@@ -29,7 +29,7 @@ export const env = createEnv({
    */
   runtimeEnv: {
     NEXT_PUBLIC_HOST_URL: process.env.NEXT_PUBLIC_HOST_URL,
-    NEXT_PUBLIC_GOOGLE_CLIENT_ID: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+    NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
     API_URL: process.env.API_URL,
     API_KEY: process.env.API_KEY,
     NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
