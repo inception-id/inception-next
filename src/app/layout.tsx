@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Providers } from "@/components/custom-ui";
 import localFont from "next/font/local";
 import "./globals.css";
-import { env } from "@/lib/env";
 
 const gotham = localFont({
   src: "./fonts/Gotham.otf",
