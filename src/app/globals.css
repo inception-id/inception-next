@@ -1,12 +1,6 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -66,7 +60,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
@@ -87,14 +81,5 @@
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--border));
     border-radius: 1rem;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
   }
 }
