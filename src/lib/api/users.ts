@@ -23,7 +23,7 @@ export const registerUser = async (
   payload: RegisterUserRequest,
 ): Promise<ApiResponse<User>> => {
   try {
-    const res = await fetch(url, {
+    const res = await fetch(url + "/register", {
       method: "POST",
       headers: {
         "x-api-key": env.API_KEY,
