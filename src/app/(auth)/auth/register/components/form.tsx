@@ -1,9 +1,7 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -15,6 +13,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { registerUser } from "@/lib/api/users";
+import { useTransition } from "react";
+import { cn } from "@/lib/utils";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const phoneField = z
   .union([
@@ -43,7 +46,10 @@ const formSchema = z
     message: "Passwords do not match.",
     path: ["repassword"], // This points the error to the repassword field
   });
+
 export function RegisterForm() {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -55,9 +61,22 @@ export function RegisterForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+    startTransition(async () => {
+      try {
+        const user = await registerUser(values);
+        if (user.status === 201) {
+          toast.success("Registration successful!", {
+            description: "Please check your email for verification.",
+          });
+          router.push("/auth/login");
+        } else {
+          toast.warning(user.message.replaceAll("_", " "));
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error("Registration failed. Please try again later.");
+      }
+    });
   }
   return (
     <Form {...form}>
@@ -88,9 +107,14 @@ export function RegisterForm() {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone</FormLabel>
+              <FormLabel>Phone (optional)</FormLabel>
               <FormControl>
-                <Input {...field} placeholder="08" type="number" />
+                <Input
+                  {...field}
+                  placeholder="08"
+                  type="number"
+                  className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -122,7 +146,13 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button
+          type="submit"
+          disabled={isPending}
+          className={cn("cursor-pointer", isPending && "animate-pulse")}
+        >
+          {isPending ? "Loading..." : "Submit"}
+        </Button>
       </form>
     </Form>
   );
