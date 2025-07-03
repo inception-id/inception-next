@@ -10,11 +10,18 @@ const Toaster = ({ ...props }: ToasterProps) => {
     <Sonner
       theme={theme as ToasterProps["theme"]}
       className="toaster group"
+      toastOptions={{
+        classNames: {
+          // Override the 'description' element styling:
+          description: "!text-foreground/50", // <-- Add your desired Tailwind class here
+        },
+      }}
       style={
         {
-          "--normal-bg": "var(--popover)",
-          "--normal-text": "var(--popover-foreground)",
+          "--normal-bg": "var(--foreground)",
+          "--normal-text": "var(--popover)",
           "--normal-border": "var(--border)",
+          description: "var(--popover-foreground)",
         } as React.CSSProperties
       }
       {...props}

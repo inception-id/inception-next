@@ -36,3 +36,21 @@ export const registerUser = async (
     throw error;
   }
 };
+
+export const resetUserPassword = async (
+  email: string,
+): Promise<ApiResponse<User>> => {
+  try {
+    const res = await fetch(url + "/password/reset", {
+      method: "POST",
+      headers: {
+        "x-api-key": env.API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};

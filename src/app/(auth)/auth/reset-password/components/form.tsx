@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { registerUser } from "@/lib/api/users";
+import { registerUser, resetUserPassword } from "@/lib/api/users";
 import { useTransition } from "react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -38,18 +38,18 @@ export function ResetPasswordForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(async () => {
       try {
-        // const user = await registerUser(values);
-        // if (user.status === 201) {
-        //   toast.success("Registration successful!", {
-        //     description: "Please check your email for verification.",
-        //   });
-        //   router.push("/auth/login");
-        // } else {
-        //   toast.warning(user.message.replaceAll("_", " "));
-        // }
+        const user = await resetUserPassword(values.email);
+        if (user.status === 200) {
+          toast.success("Reset Password request received!", {
+            description: "Please check your email for verification.",
+          });
+          router.push("/auth/login");
+        } else {
+          toast.warning(user.message.replaceAll("_", " "));
+        }
       } catch (error) {
         console.error(error);
-        toast.error("Registration failed. Please try again later.");
+        toast.error("Fail to submit request. Please try again later.");
       }
     });
   }
