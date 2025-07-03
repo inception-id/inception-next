@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { registerUser, resetUserPassword } from "@/lib/api/users";
+import { sendPasswordResetEmail } from "@/lib/api/users";
 import { useTransition } from "react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
@@ -38,7 +38,7 @@ export function ResetPasswordEmailForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(async () => {
       try {
-        const user = await resetUserPassword(values.email);
+        const user = await sendPasswordResetEmail(values.email);
         if (user.status === 200) {
           toast.success("Reset Password request received!", {
             description: "Please check your email for verification.",

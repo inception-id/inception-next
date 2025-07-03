@@ -37,11 +37,11 @@ export const registerUser = async (
   }
 };
 
-export const resetUserPassword = async (
+export const sendPasswordResetEmail = async (
   email: string,
 ): Promise<ApiResponse<User>> => {
   try {
-    const res = await fetch(url + "/password/reset", {
+    const res = await fetch(url + "/password/reset/email", {
       method: "POST",
       headers: {
         "x-api-key": env.API_KEY,
