@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { LuChevronLeft } from "react-icons/lu";
-import { ResetPasswordForm } from "./form";
+import { ResetPasswordEmailForm } from "./email-form";
 
 export const EmailCard = () => {
   return (

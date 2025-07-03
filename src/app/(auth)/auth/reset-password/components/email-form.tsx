@@ -25,7 +25,7 @@ const formSchema = z.object({
     .email("Invalid email address."),
 });
 
-export function ResetPasswordForm() {
+export function ResetPasswordEmailForm() {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof formSchema>>({
