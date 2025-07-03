@@ -6,7 +6,7 @@ const url = new URL(env.API_URL + "/users");
 
 export type User = {
   id: string;
-  supertokens_user_id: string;
+  supertokens_user_id?: string;
   created_at: string;
   updated_at: string;
   email: string;
