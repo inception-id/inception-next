@@ -20,7 +20,7 @@ export const EmailCard = () => {
         </CardDescription>
       </CardHeader>
       <CardContent className="px-0">
-        <ResetPasswordForm />
+        <ResetPasswordEmailForm />
       </CardContent>
       <CardFooter className="px-0">
         <Link
