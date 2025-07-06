@@ -12,32 +12,18 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { registerUser } from "@/lib/api/users";
+import { resetPassword, sendPasswordResetEmail } from "@/lib/api/users";
 import { useTransition } from "react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-const phoneField = z
-  .union([
-    z
-      .string()
-      .min(10, "Phone number must be at least 10 characters long")
-      .max(13, "Phone number must be at most 13 characters long")
-      .regex(/^[08]/, "Phone number must start with 0 or 8")
-      .transform((s) => (s.startsWith("0") ? s.slice(1) : s)),
-    z.literal(""),
-  ])
-  .optional()
-  .transform((val) => (val === "" ? undefined : val));
+type ResetPasswordFormProps = {
+  token?: string;
+};
 
 const formSchema = z
   .object({
-    email: z
-      .string()
-      .min(1, "Email can't be empty.")
-      .email("Invalid email address."),
-    phone: phoneField,
     password: z.string().min(1, "Password can't be empty."),
     repassword: z.string().min(1, "Re-type Password can't be empty."),
   })
@@ -46,14 +32,12 @@ const formSchema = z
     path: ["repassword"], // This points the error to the repassword field
   });
 
-export function RegisterForm() {
+export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      email: "",
-      phone: "",
       password: "",
       repassword: "",
     },
@@ -62,18 +46,18 @@ export function RegisterForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(async () => {
       try {
-        const user = await registerUser(values);
-        if (user.status === 201) {
-          toast.success("Registration successful!", {
-            description: "Please check your email for verification.",
+        const user = await resetPassword(String(token), values.password);
+        if (user.status === 200) {
+          toast.success("Reset Password successful!", {
+            description: "Please login with your new password.",
           });
           router.push("/auth/login");
         } else {
-          toast.warning(user.message);
+          toast.warning(user.message.replaceAll("_", " "));
         }
       } catch (error) {
         console.error(error);
-        toast.error("Registration failed. Please try again later.");
+        toast.error("Fail to submit request. Please try again later.");
       }
     });
   }
@@ -85,46 +69,10 @@ export function RegisterForm() {
       >
         <FormField
           control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input
-                  placeholder="user@email.com"
-                  type="email"
-                  required
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Phone (optional)</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  placeholder="08"
-                  type="number"
-                  className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password</FormLabel>
+              <FormLabel>New assword</FormLabel>
               <FormControl>
                 <Input type="password" {...field} />
               </FormControl>
@@ -137,7 +85,7 @@ export function RegisterForm() {
           name="repassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Re-type Password</FormLabel>
+              <FormLabel>Re-type New Password</FormLabel>
               <FormControl>
                 <Input type="password" {...field} />
               </FormControl>

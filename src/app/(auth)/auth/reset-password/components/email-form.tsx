@@ -38,14 +38,15 @@ export function ResetPasswordEmailForm() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     startTransition(async () => {
       try {
-        const user = await sendPasswordResetEmail(values.email);
-        if (user.status === 200) {
+        const email = await sendPasswordResetEmail(values.email);
+        console.log(email);
+        if (email.status === 200) {
           toast.success("Reset Password request received!", {
             description: "Please check your email for verification.",
           });
           router.push("/auth/login");
         } else {
-          toast.warning(user.message.replaceAll("_", " "));
+          toast.warning(email.message);
         }
       } catch (error) {
         console.error(error);

@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { LuChevronLeft } from "react-icons/lu";
-import { ResetPasswordEmailForm } from "./components";
+import { ResetPasswordEmailForm, ResetPasswordForm } from "./components";
 
 type ResetPasswordPageProps = {
   searchParams?: {
@@ -16,7 +16,8 @@ type ResetPasswordPageProps = {
   };
 };
 
-const ResetPasswordPage = ({ searchParams }: ResetPasswordPageProps) => {
+const ResetPasswordPage = async ({ searchParams }: ResetPasswordPageProps) => {
+  const { t } = await searchParams;
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm ">
@@ -25,20 +26,27 @@ const ResetPasswordPage = ({ searchParams }: ResetPasswordPageProps) => {
           <CardHeader className="px-0">
             <CardTitle>Reset Password</CardTitle>
             <CardDescription>
-              Enter your email below to receive a password reset link
+              {t
+                ? "Enter your new password below"
+                : "Enter your email below to receive a password reset link"}
             </CardDescription>
           </CardHeader>
           <CardContent className="px-0">
-            <ResetPasswordEmailForm />
+            {t ? <ResetPasswordForm token={t} /> : <ResetPasswordEmailForm />}
           </CardContent>
-          <CardFooter className="px-0">
-            <Link
-              href="/auth/login"
-              className="underline underline-offset-4 flex items-center gap-1"
-            >
+          <CardFooter className="px-0 flex items-center justify-between">
+            <Link href="/auth/login" className="flex items-center gap-1">
               <LuChevronLeft />
               <span>Back to Login</span>
             </Link>
+            {t && (
+              <Link
+                href="/auth/reset-password"
+                className="underline underline-offset-4 flex items-center gap-1"
+              >
+                Send new email
+              </Link>
+            )}
           </CardFooter>
         </Card>
       </div>
