@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { resetPassword, sendPasswordResetEmail } from "@/lib/api/users";
+import { resetPassword } from "@/lib/api/users";
 import { useTransition } from "react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
