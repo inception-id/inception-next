@@ -11,13 +11,13 @@ import { LuChevronLeft } from "react-icons/lu";
 import { ResetPasswordEmailForm, ResetPasswordForm } from "./components";
 
 type ResetPasswordPageProps = {
-  searchParams: {
+  searchParams: Promise<{
     t?: string;
-  };
+  }>;
 };
 
 const ResetPasswordPage = async ({ searchParams }: ResetPasswordPageProps) => {
-  const params = await searchParams;
+  const { t } = await searchParams;
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm ">
@@ -26,7 +26,7 @@ const ResetPasswordPage = async ({ searchParams }: ResetPasswordPageProps) => {
           <CardHeader className="px-0">
             <CardTitle>Reset Password</CardTitle>
             <CardDescription>
-              {params.t
+              {t
                 ? "Enter your new password below"
                 : "Enter your email below to receive a password reset link"}
             </CardDescription>
