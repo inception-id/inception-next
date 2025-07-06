@@ -11,7 +11,7 @@ import { LuChevronLeft } from "react-icons/lu";
 import { ResetPasswordEmailForm, ResetPasswordForm } from "./components";
 
 type ResetPasswordPageProps = {
-  searchParams?: {
+  searchParams: {
     t?: string;
   };
 };
