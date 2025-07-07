@@ -42,7 +42,6 @@ export function LoginForm() {
     startTransition(async () => {
       try {
         const loginSession = await loginUser(values.email, values.password);
-        console.log(loginSession);
         if (loginSession.status === 200) {
           const accessToken = loginSession.data.accessToken.token;
           const refreshToken = loginSession.data.refreshToken.token;
