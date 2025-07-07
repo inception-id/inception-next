@@ -73,3 +73,34 @@ export const resetPassword = async (
     throw error;
   }
 };
+
+type SessionToken = {
+  token: string;
+  expiry: number;
+  createdTime: number;
+};
+
+export type LoginUserResponse = {
+  status: string;
+  accessToken: SessionToken;
+  refreshToken: SessionToken;
+};
+
+export const loginUser = async (
+  email: string,
+  password: string,
+): Promise<ApiResponse<LoginUserResponse>> => {
+  try {
+    const res = await fetch(url + "/login", {
+      method: "POST",
+      headers: {
+        "x-api-key": env.API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};
