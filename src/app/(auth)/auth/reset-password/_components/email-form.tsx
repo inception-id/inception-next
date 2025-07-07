@@ -39,7 +39,6 @@ export function ResetPasswordEmailForm() {
     startTransition(async () => {
       try {
         const email = await sendPasswordResetEmail(values.email);
-        console.log(email);
         if (email.status === 200) {
           toast.success("Reset Password request received!", {
             description: "Please check your email for verification.",
