@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { HeroSection, Navbar, Testimonial, WhyUs } from "./_components";
 import Image from "next/image";
 

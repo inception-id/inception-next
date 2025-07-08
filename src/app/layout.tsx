@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Providers } from "@/components/custom-ui";
 import { Figtree } from "next/font/google";
-import localFont from "next/font/local";
 import "./globals.css";
 
 const figtree = Figtree({

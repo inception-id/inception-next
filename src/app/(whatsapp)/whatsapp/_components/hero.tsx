@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { sendGAEvent } from "@next/third-parties/google";
 import Image from "next/image";
 import Link from "next/link";
-import { LuCircleCheck } from "react-icons/lu";
 
 export const HeroSection = () => {
   return (

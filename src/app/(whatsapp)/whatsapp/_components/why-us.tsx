@@ -1,5 +1,5 @@
 "use client";
-import { LuCloud, LuHeart } from "react-icons/lu";
+import { LuHeart } from "react-icons/lu";
 import {
   MdCloud,
   MdHeadphones,
