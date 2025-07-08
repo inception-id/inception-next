@@ -8,7 +8,7 @@ import { LuCircleCheck } from "react-icons/lu";
 
 export const HeroSection = () => {
   return (
-    <div className="container mx-auto p-4 flex flex-col gap-4 lg:flex-row lg:items-center">
+    <div className="container mx-auto p-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-16">
       <div className="flex flex-col gap-4">
         <div className="font-bold">WhatsApp Notification API Rp. 1 rupiah</div>
         <h1 className="text-3xl font-bold">
@@ -44,14 +44,14 @@ export const HeroSection = () => {
 
         <div className="grid gap-4 md:grid-cols-2">
           <Link
-            href="/whatsapp/contact-us"
+            href="/whatsapp"
             className={cn(buttonVariants(), "w-full")}
             onClick={() => sendGAEvent("event", "whatsapp_faq")}
           >
             Hubungi Kami
           </Link>
           <Link
-            href="/whatsapp/auth/login"
+            href="/whatsapp"
             className={cn(buttonVariants({ variant: "outline" }), "w-full ")}
             onClick={() => sendGAEvent("event", "whatsapp_test")}
           >
