@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { Navbar } from "./_components";
+import { HeroSection, Navbar } from "./_components";
 
 const WhatsappPage = () => {
   return (
-    <div>
+    <>
       <Navbar />
-      <Button>hoi</Button>
-    </div>
+      <HeroSection />
+    </>
   );
 };
 

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Providers } from "@/components/custom-ui";
+import { Figtree } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const gotham = localFont({
-  src: "./fonts/Gotham.otf",
+const figtree = Figtree({
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -20,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={gotham.className}>
+      <body className={figtree.className}>
         <Providers>{children}</Providers>
       </body>
     </html>

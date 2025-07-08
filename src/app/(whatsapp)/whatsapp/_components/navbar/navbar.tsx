@@ -9,14 +9,14 @@ import { NavbarMenu } from "./menu";
 export const Navbar = () => {
   return (
     <div className="container mx-auto flex items-center justify-between py-4 pr-2 lg:px-0">
-      <Link href="/" className={buttonVariants({ variant: "link" })}>
+      <Link href="/whatsapp" className={buttonVariants({ variant: "link" })}>
         <LuMessageCircle />
         INCEPTION
       </Link>
       <NavbarMenu />
-      <div className="flex items-center gap-4 lg:hidden">
+      <div className="flex items-center gap-4 md:hidden">
         <Link
-          href="/whatsapp/contact-us"
+          href="/whatsapp"
           className={cn(buttonVariants({ variant: "outline" }))}
         >
           <MdWhatsapp />

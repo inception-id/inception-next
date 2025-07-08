@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import {
   NavigationMenu,
@@ -12,6 +13,7 @@ import {
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/custom-ui";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export const NavbarMenu = () => {
   return (
@@ -20,8 +22,9 @@ export const NavbarMenu = () => {
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link
-              href="/whatsapp/pricing"
+              href="/whatsapp"
               className={cn(buttonVariants({ variant: "ghost" }))}
+              onClick={() => sendGAEvent("event", "whatsapp_pricing")}
             >
               Harga
             </Link>
@@ -30,8 +33,9 @@ export const NavbarMenu = () => {
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link
-              href="/whatsapp/auth/login"
+              href="/whatsapp"
               className={cn(buttonVariants({ variant: "ghost" }))}
+              onClick={() => sendGAEvent("event", "whatsapp_login")}
             >
               Login
             </Link>
@@ -40,8 +44,9 @@ export const NavbarMenu = () => {
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link
-              href="/whatsapp/contact-us"
+              href="/whatsapp"
               className={cn(buttonVariants({ variant: "outline" }), "w-full")}
+              onClick={() => sendGAEvent("event", "whatsapp_faq")}
             >
               Hubungi Kami
             </Link>
@@ -49,8 +54,9 @@ export const NavbarMenu = () => {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link
-            href="/whatsapp/auth/login"
+            href="/whatsapp"
             className={cn(buttonVariants(), "w-full ")}
+            onClick={() => sendGAEvent("event", "whatsapp_test")}
           >
             Coba Gratis
           </Link>

@@ -1,3 +1,4 @@
+"use client";
 import {
   Sheet,
   SheetClose,
@@ -13,6 +14,7 @@ import { ThemeToggle } from "@/components/custom-ui/theme-toggle";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export const NavbarSheet = () => {
   return (
@@ -44,11 +46,12 @@ export const NavbarSheet = () => {
             Beranda
           </Link>
           <Link
-            href="/whatsapp/pricing"
+            href="/whatsapp"
             className={cn(
               buttonVariants({ variant: "link" }),
               "w-full justify-start",
             )}
+            onClick={() => sendGAEvent("event", "whatsapp_pricing")}
           >
             Harga
           </Link>
@@ -56,20 +59,23 @@ export const NavbarSheet = () => {
         <SheetFooter>
           <ThemeToggle />
           <Link
-            href="/whatsapp/auth/login"
+            href="/whatsapp"
             className={cn(buttonVariants({ variant: "outline" }), "w-full")}
+            onClick={() => sendGAEvent("event", "whatsapp_login")}
           >
             Login
           </Link>
           <Link
-            href="/whatsapp/contact-us"
+            href="/whatsapp"
             className={cn(buttonVariants({ variant: "outline" }), "w-full")}
+            onClick={() => sendGAEvent("event", "whatsapp_faq")}
           >
             Hubungi Kami
           </Link>
           <Link
-            href="/whatsapp/auth/login"
+            href="/whatsapp"
             className={cn(buttonVariants(), "w-full ")}
+            onClick={() => sendGAEvent("event", "whatsapp_test")}
           >
             Coba Gratis
           </Link>
