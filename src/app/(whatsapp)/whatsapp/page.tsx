@@ -5,6 +5,7 @@ const WhatsappPage = () => {
   return (
     <div>
       <Navbar />
+      <Button>hoi</Button>
     </div>
   );
 };

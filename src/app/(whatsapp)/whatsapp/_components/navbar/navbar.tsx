@@ -1,7 +1,9 @@
-import { ThemeToggle } from "@/components/custom-ui/theme-toggle";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { LuMessageCircle } from "react-icons/lu";
+import { NavbarSheet } from "./sheet";
+import { cn } from "@/lib/utils";
+import { MdWhatsapp } from "react-icons/md";
 
 export const Navbar = () => {
   return (
@@ -10,7 +12,16 @@ export const Navbar = () => {
         <LuMessageCircle />
         INCEPTION
       </Link>
-      <ThemeToggle />
+      <div className="flex items-center gap-4 lg:hidden">
+        <Link
+          href="/whatsapp/contact-us"
+          className={cn(buttonVariants({ variant: "outline" }))}
+        >
+          <MdWhatsapp />
+          Whatsapp Kami
+        </Link>
+        <NavbarSheet />
+      </div>
     </div>
   );
 };
