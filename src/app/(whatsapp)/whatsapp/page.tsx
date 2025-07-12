@@ -1,5 +1,6 @@
-import { HeroSection, Navbar, Testimonial, WhyUs } from "./_components";
+import { Faq, HeroSection, Navbar, Testimonial, WhyUs } from "./_components";
 import Image from "next/image";
+import Footer from "./_components/footer";
 
 const WhatsappPage = () => {
   return (
@@ -20,6 +21,8 @@ const WhatsappPage = () => {
       </div>
       <WhyUs />
       <Testimonial />
+      <Faq />
+      <Footer />
     </>
   );
 };

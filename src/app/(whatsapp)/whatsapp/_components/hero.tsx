@@ -64,6 +64,7 @@ export const HeroSection = () => {
         className="w-full h-auto object-contain aspect-square rounded"
         width={400}
         height={400}
+        priority
       />
     </div>
   );
