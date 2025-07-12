@@ -42,7 +42,7 @@ export const NavbarMenu = () => {
             <Link
               href="/whatsapp"
               className={cn(buttonVariants({ variant: "outline" }), "w-full")}
-              onClick={() => sendGAEvent("event", "whatsapp_faq")}
+              onClick={() => sendGAEvent("event", "whatsapp_ask")}
             >
               Hubungi Kami
             </Link>
