@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Providers } from "@/components/custom-ui";
-import { Rubik } from "next/font/google";
+import { Figtree } from "next/font/google";
 import "./globals.css";
 
-const rubik = Rubik({ subsets: ["latin"] });
+const figtree = Figtree({
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 export const metadata: Metadata = {
   title: "Inception.id",
@@ -18,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={rubik.className}>
+      <body className={figtree.className}>
         <Providers>{children}</Providers>
       </body>
     </html>

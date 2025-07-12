@@ -1,4 +1,4 @@
-import { Navbar } from "./components";
+import { Navbar } from "./_components";
 
 type TInceptionBaseLayout = {
   children: React.ReactNode;
