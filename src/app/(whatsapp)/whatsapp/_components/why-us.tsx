@@ -1,24 +1,14 @@
 "use client";
 import {
-  LuClock,
   LuCloud,
   LuHeadset,
   LuHeart,
   LuShield,
-  LuSpeaker,
   LuTags,
   LuThumbsUp,
   LuUsers,
 } from "react-icons/lu";
-import {
-  MdCloud,
-  MdHeadphones,
-  MdPeople,
-  MdReport,
-  MdShield,
-  MdSync,
-  MdWhatsapp,
-} from "react-icons/md";
+import { MdReport, MdSync, MdWhatsapp } from "react-icons/md";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
