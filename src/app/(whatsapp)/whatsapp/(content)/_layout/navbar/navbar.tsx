@@ -1,11 +1,9 @@
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import { LuMessageCircle } from "react-icons/lu";
 import { NavbarSheet } from "./sheet";
 import { cn } from "@/lib/utils";
 import { MdWhatsapp } from "react-icons/md";
 import { NavbarMenu } from "./menu";
-import Image from "next/image";
 
 export const Navbar = () => {
   return (
