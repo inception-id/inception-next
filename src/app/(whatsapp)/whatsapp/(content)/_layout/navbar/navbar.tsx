@@ -1,6 +1,5 @@
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import { LuMessageCircle } from "react-icons/lu";
 import { NavbarSheet } from "./sheet";
 import { cn } from "@/lib/utils";
 import { MdWhatsapp } from "react-icons/md";
@@ -13,7 +12,6 @@ export const Navbar = () => {
         href="/whatsapp"
         className={cn(buttonVariants({ variant: "link" }), "font-bold")}
       >
-        <LuMessageCircle />
         INCEPTION
       </Link>
       <NavbarMenu />

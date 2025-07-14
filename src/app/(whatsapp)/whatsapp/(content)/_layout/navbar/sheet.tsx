@@ -46,7 +46,7 @@ export const NavbarSheet = () => {
             Beranda
           </Link>
           <Link
-            href="/whatsapp"
+            href="/whatsapp/pricing"
             className={cn(
               buttonVariants({ variant: "link" }),
               "w-full justify-start",
