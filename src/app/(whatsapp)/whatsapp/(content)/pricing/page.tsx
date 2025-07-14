@@ -1,10 +1,10 @@
 import { LuZap } from "react-icons/lu";
-import { Calculator, PriceCards } from "./_components";
+import { Calculator, Features, PriceCards, Faq, Cta } from "./_components";
 
 const WhatsappPricing = () => {
   return (
-    <div className="container mx-auto p-4">
-      <div className="flex flex-col gap-2 mb-8">
+    <div className="container mx-auto p-4 flex flex-col gap-16">
+      <div className="flex flex-col gap-2">
         <h1 className="text-3xl text-center font-bold">WhatsApp API Pricing</h1>
         <p className="text-center">
           Pay after you use dengan WhatsApp Notification API.
@@ -18,6 +18,9 @@ const WhatsappPricing = () => {
         <Calculator />
         <PriceCards />
       </div>
+      <Features />
+      <Faq />
+      <Cta />
     </div>
   );
 };
