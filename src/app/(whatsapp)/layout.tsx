@@ -1,5 +1,3 @@
-import "./whatsapp.css";
-
 type WhatsappLayoutProps = {
   children: React.ReactNode;
 };

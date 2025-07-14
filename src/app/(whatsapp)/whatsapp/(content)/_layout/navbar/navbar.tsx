@@ -5,6 +5,7 @@ import { NavbarSheet } from "./sheet";
 import { cn } from "@/lib/utils";
 import { MdWhatsapp } from "react-icons/md";
 import { NavbarMenu } from "./menu";
+import Image from "next/image";
 
 export const Navbar = () => {
   return (
@@ -13,7 +14,6 @@ export const Navbar = () => {
         href="/whatsapp"
         className={cn(buttonVariants({ variant: "link" }), "font-bold")}
       >
-        <LuMessageCircle />
         INCEPTION
       </Link>
       <NavbarMenu />
