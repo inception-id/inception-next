@@ -12,7 +12,7 @@ import {
 } from "react-icons/lu";
 import { sendGAEvent } from "@next/third-parties/google";
 
-export default function Footer() {
+export const Footer = () => {
   return (
     <footer className="bg-background border-t">
       <div className="container mx-auto px-4 py-12 md:py-16">
@@ -210,4 +210,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+};
