@@ -58,7 +58,7 @@ export const HeroSection = () => {
             Hubungi Kami
           </Link>
           <Link
-            href="#"
+            href="/auth/login"
             className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
             onClick={() => sendGAEvent("event", "whatsapp_test")}
           >

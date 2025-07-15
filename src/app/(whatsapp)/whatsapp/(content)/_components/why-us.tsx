@@ -97,7 +97,7 @@ export const WhyUs = () => {
 
       <div className="grid gap-4 md:grid-cols-2 mx-auto w-full max-w-lg">
         <Link
-          href="/whatsapp"
+          href="#"
           className={cn(buttonVariants({ size: "lg" }))}
           onClick={() => sendGAEvent("event", "whatsapp_ask")}
         >
@@ -105,7 +105,7 @@ export const WhyUs = () => {
           Konsultasi Gratis
         </Link>
         <Link
-          href="/whatsapp"
+          href="/auth/login"
           className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
           onClick={() => sendGAEvent("event", "whatsapp_test")}
         >

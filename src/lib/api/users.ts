@@ -104,3 +104,21 @@ export const loginUser = async (
     throw error;
   }
 };
+
+export const verifyUserEmail = async (
+  token?: string,
+): Promise<ApiResponse<User>> => {
+  try {
+    const res = await fetch(url + "/verify", {
+      method: "POST",
+      headers: {
+        "x-api-key": env.API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ token }),
+    });
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};

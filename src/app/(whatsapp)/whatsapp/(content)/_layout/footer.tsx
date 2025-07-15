@@ -172,7 +172,7 @@ export const Footer = () => {
               <Button
                 type="submit"
                 className="w-full"
-                onClick={() => sendGAEvent("event", "whatsapp_test")}
+                onClick={() => sendGAEvent("event", "whatsapp_ask")}
               >
                 <LuMail className="h-4 w-4 mr-2" />
                 Subscribe

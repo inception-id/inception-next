@@ -14,7 +14,7 @@ export const Cta = () => {
       </p>
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
         <Link
-          href="#"
+          href="/auth/login"
           className={cn(buttonVariants({ size: "lg" }))}
           onClick={() => sendGAEvent("event", "whatsapp_test")}
         >
