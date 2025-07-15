@@ -29,7 +29,7 @@ export const NavbarMenu = () => {
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link
-              href="/whatsapp"
+              href="/auth/login"
               className={cn(buttonVariants({ variant: "ghost" }))}
               onClick={() => sendGAEvent("event", "whatsapp_login")}
             >
@@ -40,7 +40,7 @@ export const NavbarMenu = () => {
         <NavigationMenuItem>
           <NavigationMenuLink asChild>
             <Link
-              href="/whatsapp"
+              href="#"
               className={cn(buttonVariants({ variant: "outline" }), "w-full")}
               onClick={() => sendGAEvent("event", "whatsapp_ask")}
             >
@@ -50,7 +50,7 @@ export const NavbarMenu = () => {
         </NavigationMenuItem>
         <NavigationMenuItem>
           <Link
-            href="/whatsapp"
+            href="/auth/login"
             className={cn(buttonVariants(), "w-full ")}
             onClick={() => sendGAEvent("event", "whatsapp_test")}
           >

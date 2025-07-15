@@ -32,7 +32,7 @@ export const PriceCards = () => {
           </ul>
         </CardContent>
         <CardFooter>
-          <Link className={cn(buttonVariants(), "w-full")} href="#">
+          <Link className={cn(buttonVariants(), "w-full")} href="/auth/login">
             Mulai Sekarang
           </Link>
         </CardFooter>
@@ -56,7 +56,7 @@ export const PriceCards = () => {
           </ul>
         </CardContent>
         <CardFooter>
-          <Link className={cn(buttonVariants(), "w-full")} href="#">
+          <Link className={cn(buttonVariants(), "w-full")} href="/auth/login">
             Mulai Sekarang
           </Link>
         </CardFooter>

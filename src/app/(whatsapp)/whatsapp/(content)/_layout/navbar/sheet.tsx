@@ -59,7 +59,7 @@ export const NavbarSheet = () => {
         <SheetFooter>
           <ThemeToggle />
           <Link
-            href="/whatsapp"
+            href="/auth/login"
             className={cn(buttonVariants({ variant: "outline" }), "w-full")}
             onClick={() => sendGAEvent("event", "whatsapp_login")}
           >
@@ -73,7 +73,7 @@ export const NavbarSheet = () => {
             Hubungi Kami
           </Link>
           <Link
-            href="/whatsapp"
+            href="/auth/login"
             className={cn(buttonVariants(), "w-full ")}
             onClick={() => sendGAEvent("event", "whatsapp_test")}
           >
