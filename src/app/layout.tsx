@@ -9,9 +9,8 @@ const figtree = Figtree({
 });
 
 export const metadata: Metadata = {
-  title: "Inception.id",
+  title: "INCEPTION",
   description: "",
-  keywords: "",
 };
 
 export default function RootLayout({
