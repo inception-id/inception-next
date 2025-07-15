@@ -1,4 +1,4 @@
-import { queryOptions, useQuery } from "@tanstack/react-query";
+import { queryOptions } from "@tanstack/react-query";
 import { verifyUserEmail } from "./users";
 import { toast } from "sonner";
 
