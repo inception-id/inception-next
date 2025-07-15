@@ -21,8 +21,8 @@ export const useVerifyUserEmailOption = (token?: string) => {
         return verifyEmail;
       } catch (error) {
         console.error(error);
+        return null;
       }
-      return null;
     },
   });
 };
