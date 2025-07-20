@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { HeroSectionProps } from "./type";
 import Image from "next/image";
 
-export default function HeroSectionOne({
+export function HeroSectionOne({
   title,
   description,
   imageSrc,

@@ -3,7 +3,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { sendGAEvent } from "@next/third-parties/google";
 import Link from "next/link";
-import HeroSectionOne from "@/components/custom-ui/hero/one";
+import { HeroSectionOne } from "@/components/custom-ui";
 
 export const HeroSection = () => {
   return (
