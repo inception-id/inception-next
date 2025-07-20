@@ -4,6 +4,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -13,23 +14,22 @@ const RegisterPage = () => {
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm ">
         <h1 className="mb-4 text-2xl">INCEPTION</h1>
-        <Card className="border-none shadow-none py-0">
-          <CardHeader className="px-0">
+        <Card>
+          <CardHeader>
             <CardTitle>Register account</CardTitle>
             <CardDescription>
               Enter your credential below to create an account
             </CardDescription>
           </CardHeader>
-          <CardContent className="px-0">
+          <CardContent>
             <RegisterForm />
-
-            <div className="mt-4 text-center text-sm">
-              Already have an account?{" "}
-              <Link href="/auth/login" className="underline underline-offset-4">
-                Login
-              </Link>
-            </div>
           </CardContent>
+          <CardFooter className="text-sm gap-1">
+            <span>Have an account?</span>
+            <Link href="/auth/login" className="underline underline-offset-4">
+              Login
+            </Link>
+          </CardFooter>
         </Card>
       </div>
     </div>

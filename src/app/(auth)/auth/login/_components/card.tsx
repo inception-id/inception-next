@@ -20,15 +20,15 @@ type LoginCardProps = {
 export const LoginCard = ({ token }: LoginCardProps) => {
   useQuery({ ...useVerifyUserEmailOption(token) });
   return (
-    <Card className="border-none shadow-none py-0">
-      <CardHeader className="px-0">
+    <Card>
+      <CardHeader>
         <CardTitle>Account Login</CardTitle>
         <CardDescription>Enter your credential below to login</CardDescription>
       </CardHeader>
-      <CardContent className="px-0">
+      <CardContent>
         <LoginForm />
       </CardContent>
-      <CardFooter className="flex items-center justify-between text-sm px-0">
+      <CardFooter className="flex items-center justify-between text-sm">
         <Link
           href="/auth/reset-password "
           className="hover:underline underline-offset-4"
