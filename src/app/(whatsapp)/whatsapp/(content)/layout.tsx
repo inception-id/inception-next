@@ -1,4 +1,4 @@
-import { Navbar, Footer } from "./_layout";
+import { Footer, Navbar } from "./_layout";
 
 type WhatsappContentLayoutProps = {
   children: React.ReactNode;

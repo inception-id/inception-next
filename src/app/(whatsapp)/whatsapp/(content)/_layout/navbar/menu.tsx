@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -16,50 +15,26 @@ export const NavbarMenu = () => {
     <NavigationMenu className="hidden md:block">
       <NavigationMenuList className="gap-4">
         <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link
-              href="/whatsapp/pricing"
-              className={cn(buttonVariants({ variant: "ghost" }))}
-              onClick={() => sendGAEvent("event", "whatsapp_pricing")}
-            >
-              Harga
-            </Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link
-              href="/auth/login"
-              className={cn(buttonVariants({ variant: "ghost" }))}
-              onClick={() => sendGAEvent("event", "whatsapp_login")}
-            >
-              Login
-            </Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild>
-            <Link
-              href="#"
-              className={cn(buttonVariants({ variant: "outline" }), "w-full")}
-              onClick={() => sendGAEvent("event", "whatsapp_ask")}
-            >
-              Hubungi Kami
-            </Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <Link
-            href="/auth/login"
-            className={cn(buttonVariants(), "w-full ")}
-            onClick={() => sendGAEvent("event", "whatsapp_test")}
+          <NavigationMenuLink
+            href="/whatsapp/pricing"
+            className={cn(buttonVariants({ variant: "link" }))}
+            onClick={() => sendGAEvent("event", "whatsapp_pricing")}
           >
-            Coba Gratis
-          </Link>
+            Pricing
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink
+            href="/auth/login"
+            className={cn(buttonVariants({ variant: "link" }))}
+            onClick={() => sendGAEvent("event", "whatsapp_login")}
+          >
+            Login
+          </NavigationMenuLink>
         </NavigationMenuItem>
 
         <NavigationMenuItem>
-          <ThemeToggle />
+          <ThemeToggle variant="ghost" />
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

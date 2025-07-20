@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { LuChevronLeft } from "react-icons/lu";
 import { ResetPasswordEmailForm, ResetPasswordForm } from "./_components";
 
 type ResetPasswordPageProps = {
@@ -22,8 +21,8 @@ const ResetPasswordPage = async ({ searchParams }: ResetPasswordPageProps) => {
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm ">
         <h1 className="mb-4 text-2xl">INCEPTION</h1>
-        <Card className="border-none shadow-none py-0">
-          <CardHeader className="px-0">
+        <Card>
+          <CardHeader>
             <CardTitle>Reset Password</CardTitle>
             <CardDescription>
               {t
@@ -31,18 +30,20 @@ const ResetPasswordPage = async ({ searchParams }: ResetPasswordPageProps) => {
                 : "Enter your email below to receive a password reset link"}
             </CardDescription>
           </CardHeader>
-          <CardContent className="px-0">
+          <CardContent>
             {t ? <ResetPasswordForm token={t} /> : <ResetPasswordEmailForm />}
           </CardContent>
-          <CardFooter className="px-0 flex items-center justify-between">
-            <Link href="/auth/login" className="flex items-center gap-1">
-              <LuChevronLeft />
-              <span>Back to Login</span>
+          <CardFooter className="justify-between">
+            <Link
+              href="/auth/login"
+              className="flex items-center hover:underline underline-offset-4"
+            >
+              Back to Login
             </Link>
             {t && (
               <Link
                 href="/auth/reset-password"
-                className="underline underline-offset-4 flex items-center gap-1"
+                className="underline underline-offset-4 flex items-center "
               >
                 Send new email
               </Link>

@@ -1,213 +1,134 @@
-"use client";
+import { env } from "@/lib/env";
+import Image from "next/image";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import {
-  LuFacebook,
-  LuGithub,
-  LuInstagram,
-  LuLinkedin,
-  LuMail,
-  LuTwitter,
-} from "react-icons/lu";
-import { sendGAEvent } from "@next/third-parties/google";
 
-export const Footer = () => {
+interface MenuItem {
+  title: string;
+  links: {
+    text: string;
+    url: string;
+  }[];
+}
+
+interface Footer2Props {
+  logo?: {
+    url: string;
+    src: string;
+    alt: string;
+    title: string;
+  };
+  tagline?: string;
+  menuItems?: MenuItem[];
+  copyright?: string;
+  bottomLinks?: {
+    text: string;
+    url: string;
+  }[];
+}
+
+export const Footer = ({
+  logo = {
+    src: "/images/inception.png",
+    alt: "INCEPTION Whatsapp Notification",
+    title: "INCEPTION",
+    url: env.NEXT_PUBLIC_HOST_URL,
+  },
+  tagline = "Building foolish, creative, and generous products",
+  menuItems = [
+    {
+      title: "Product",
+      links: [
+        { text: "Overview", url: "#" },
+        { text: "Pricing", url: "#" },
+        { text: "Marketplace", url: "#" },
+        { text: "Features", url: "#" },
+        { text: "Integrations", url: "#" },
+        { text: "Pricing", url: "#" },
+      ],
+    },
+    {
+      title: "Company",
+      links: [
+        { text: "About", url: "#" },
+        { text: "Team", url: "#" },
+        { text: "Blog", url: "#" },
+        { text: "Careers", url: "#" },
+        { text: "Contact", url: "#" },
+        { text: "Privacy", url: "#" },
+      ],
+    },
+    {
+      title: "Resources",
+      links: [
+        { text: "Help", url: "#" },
+        { text: "Sales", url: "#" },
+        { text: "Advertise", url: "#" },
+      ],
+    },
+    {
+      title: "Social",
+      links: [
+        { text: "Twitter", url: "#" },
+        { text: "Instagram", url: "#" },
+        { text: "LinkedIn", url: "#" },
+      ],
+    },
+  ],
+  copyright = `© ${new Date().getFullYear()} inception.id All rights reserved.`,
+  bottomLinks = [
+    { text: "Terms and Conditions", url: "#" },
+    { text: "Privacy Policy", url: "#" },
+  ],
+}: Footer2Props) => {
   return (
-    <footer className="bg-background border-t">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Company</h3>
-            <p className="text-sm text-muted-foreground">
-              Building the future of web development with innovative solutions
-              and cutting-edge technology.
-            </p>
-            <div className="flex space-x-4">
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <LuFacebook className="h-5 w-5" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <LuTwitter className="h-5 w-5" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <LuInstagram className="h-5 w-5" />
-                <span className="sr-only">Instagram</span>
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <LuLinkedin className="h-5 w-5" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-              <Link
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <LuGithub className="h-5 w-5" />
-                <span className="sr-only">GitHub</span>
-              </Link>
+    <section className="py-32">
+      <div className="container mx-auto">
+        <footer>
+          <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
+            <div className="col-span-2 mb-8 lg:mb-0">
+              <div className="flex items-center gap-2 lg:justify-start">
+                <Link href="/">
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    title={logo.title}
+                    className="h-10"
+                    width={25}
+                    height={25}
+                  />
+                  <div className="text-xl">{logo.title}</div>
+                </Link>
+              </div>
+              <p className="mt-4 font-bold">{tagline}</p>
             </div>
+            {menuItems.map((section, sectionIdx) => (
+              <div key={sectionIdx}>
+                <h3 className="mb-4 font-bold">{section.title}</h3>
+                <ul className="text-muted-foreground space-y-4">
+                  {section.links.map((link, linkIdx) => (
+                    <li
+                      key={linkIdx}
+                      className="hover:text-primary font-medium"
+                    >
+                      <a href={link.url}>{link.text}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
-
-          {/* Product Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Product</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/whatsapp/pricing"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Documentation
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  API Reference
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Changelog
-                </Link>
-              </li>
+          <div className="text-muted-foreground mt-24 flex flex-col justify-between gap-4 border-t pt-8 text-sm font-medium md:flex-row md:items-center">
+            <p>{copyright}</p>
+            <ul className="flex gap-4">
+              {bottomLinks.map((link, linkIdx) => (
+                <li key={linkIdx} className="hover:text-primary underline">
+                  <a href={link.url}>{link.text}</a>
+                </li>
+              ))}
             </ul>
           </div>
-
-          {/* Support Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Support</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Help Center
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Contact Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Community
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Status Page
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Bug Reports
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter Signup */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Stay Updated</h3>
-            <p className="text-sm text-muted-foreground">
-              Subscribe to our newsletter for the latest updates and news.
-            </p>
-            <form className="space-y-2">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full"
-              />
-              <Button
-                type="submit"
-                className="w-full"
-                onClick={() => sendGAEvent("event", "whatsapp_ask")}
-              >
-                <LuMail className="h-4 w-4 mr-2" />
-                Subscribe
-              </Button>
-            </form>
-          </div>
-        </div>
-
-        {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Company Name. All rights reserved.
-          </div>
-          <nav className="flex space-x-6">
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Terms of Service
-            </Link>
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Cookie Policy
-            </Link>
-          </nav>
-        </div>
+        </footer>
       </div>
-    </footer>
+    </section>
   );
 };
