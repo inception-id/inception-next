@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { LuChevronLeft } from "react-icons/lu";
 import { ResetPasswordEmailForm, ResetPasswordForm } from "./_components";
 
 type ResetPasswordPageProps = {

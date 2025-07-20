@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { LuCircleCheck } from "react-icons/lu";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface PricingFeature {
   text: string;
@@ -72,7 +74,6 @@ export const Pricing = ({
     },
   ],
 }: Pricing2Props) => {
-  const [isYearly, setIsYearly] = useState(false);
   return (
     <section className="py-32">
       <div className="container mx-auto">
@@ -123,11 +124,13 @@ export const Pricing = ({
                   </ul>
                 </CardContent>
                 <CardFooter className="mt-auto">
-                  <Button asChild className="w-full">
-                    <a href={plan.button.url} target="_blank">
-                      {plan.button.text}
-                    </a>
-                  </Button>
+                  <Link
+                    href={plan.button.url}
+                    target="_blank"
+                    className={cn(buttonVariants(), "w-full")}
+                  >
+                    {plan.button.text}
+                  </Link>
                 </CardFooter>
               </Card>
             ))}

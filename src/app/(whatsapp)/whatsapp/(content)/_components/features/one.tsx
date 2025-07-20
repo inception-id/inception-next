@@ -1,7 +1,5 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { useEffect, useRef } from "react";
-import { motion } from "motion/react";
 import Image from "next/image";
 
 export function FeaturesSectionOne() {
@@ -155,18 +153,6 @@ export const SkeletonTwo = () => {
     "https://images.unsplash.com/photo-1546484475-7f7bd55792da?q=80&w=2581&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   ];
 
-  const imageVariants = {
-    whileHover: {
-      scale: 1.1,
-      rotate: 0,
-      zIndex: 100,
-    },
-    whileTap: {
-      scale: 1.1,
-      rotate: 0,
-      zIndex: 100,
-    },
-  };
   return (
     <div className="relative flex flex-col items-start p-8 gap-10 h-full overflow-hidden">
       <div className="flex flex-row -ml-20">

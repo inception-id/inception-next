@@ -2,7 +2,6 @@ import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 import { NavbarSheet } from "./sheet";
 import { cn } from "@/lib/utils";
-import { MdWhatsapp } from "react-icons/md";
 import { NavbarMenu } from "./menu";
 
 export const Navbar = () => {

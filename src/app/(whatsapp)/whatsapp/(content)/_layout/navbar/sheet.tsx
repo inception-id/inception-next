@@ -9,7 +9,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { LuMenu, LuMessageCircle, LuX } from "react-icons/lu";
+import { LuMenu, LuX } from "react-icons/lu";
 import { ThemeToggle } from "@/components/custom-ui/theme-toggle";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
