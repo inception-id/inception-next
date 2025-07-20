@@ -12,7 +12,7 @@ type WhatsappLayoutProps = {
 };
 
 const WhatsappLayout = ({ children }: WhatsappLayoutProps) => {
-  return <div className="theme-whatsapp">{children}</div>;
+  return <>{children}</>;
 };
 
 export default WhatsappLayout;

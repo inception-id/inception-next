@@ -15,24 +15,26 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { sendGAEvent } from "@next/third-parties/google";
+import { useState } from "react";
 
 export const NavbarSheet = () => {
+  const [sheetOpen, setSheetOpen] = useState(false);
   return (
-    <Sheet>
-      <SheetTrigger className="theme-whatsapp">
+    <Sheet open={sheetOpen}>
+      <SheetTrigger
+        className={cn(buttonVariants({ variant: "ghost" }), "md:hidden")}
+        onClick={() => setSheetOpen(true)}
+      >
         <LuMenu />
       </SheetTrigger>
-      <SheetContent className="theme-whatsapp">
-        <SheetHeader>
-          <div className="flex items-center justify-between">
-            <SheetTitle className="flex items-center gap-1">
-              <LuMessageCircle />
-              INCEPTION
-            </SheetTitle>
-            <SheetClose>
-              <LuX />
-            </SheetClose>
-          </div>
+      <SheetContent>
+        <SheetHeader className="flex-row items-center justify-between w-full gap-0">
+          <SheetTitle>INCEPTION</SheetTitle>
+          <SheetClose
+            className={cn(buttonVariants({ variant: "ghost" }), "ml-auto")}
+          >
+            <LuX />
+          </SheetClose>
           <SheetDescription />
         </SheetHeader>
         <div className="flex flex-col gap-2">
@@ -42,8 +44,9 @@ export const NavbarSheet = () => {
               buttonVariants({ variant: "link" }),
               "w-full justify-start",
             )}
+            onClick={() => setSheetOpen(false)}
           >
-            Beranda
+            Home
           </Link>
           <Link
             href="/whatsapp/pricing"
@@ -51,34 +54,29 @@ export const NavbarSheet = () => {
               buttonVariants({ variant: "link" }),
               "w-full justify-start",
             )}
-            onClick={() => sendGAEvent("event", "whatsapp_pricing")}
+            onClick={() => {
+              sendGAEvent("event", "whatsapp_pricing");
+              setSheetOpen(false);
+            }}
           >
-            Harga
+            Pricing
+          </Link>
+          <Link
+            href="/auth/login"
+            className={cn(
+              buttonVariants({ variant: "link" }),
+              "w-full justify-start",
+            )}
+            onClick={() => {
+              sendGAEvent("event", "whatsapp_login");
+              setSheetOpen(false);
+            }}
+          >
+            Login
           </Link>
         </div>
         <SheetFooter>
           <ThemeToggle />
-          <Link
-            href="/auth/login"
-            className={cn(buttonVariants({ variant: "outline" }), "w-full")}
-            onClick={() => sendGAEvent("event", "whatsapp_login")}
-          >
-            Login
-          </Link>
-          <Link
-            href="/whatsapp"
-            className={cn(buttonVariants({ variant: "outline" }), "w-full")}
-            onClick={() => sendGAEvent("event", "whatsapp_ask")}
-          >
-            Hubungi Kami
-          </Link>
-          <Link
-            href="/auth/login"
-            className={cn(buttonVariants(), "w-full ")}
-            onClick={() => sendGAEvent("event", "whatsapp_test")}
-          >
-            Coba Gratis
-          </Link>
         </SheetFooter>
       </SheetContent>
     </Sheet>

@@ -7,7 +7,7 @@ import { NavbarMenu } from "./menu";
 
 export const Navbar = () => {
   return (
-    <div className="container mx-auto flex items-center justify-between py-4 pr-2 lg:px-0">
+    <div className="container mx-auto flex items-center justify-between py-2">
       <Link
         href="/whatsapp"
         className={cn(buttonVariants({ variant: "link" }), "font-bold")}
@@ -15,16 +15,7 @@ export const Navbar = () => {
         INCEPTION
       </Link>
       <NavbarMenu />
-      <div className="flex items-center gap-4 md:hidden">
-        <Link
-          href="/whatsapp"
-          className={cn(buttonVariants({ variant: "outline" }))}
-        >
-          <MdWhatsapp />
-          Whatsapp Kami
-        </Link>
-        <NavbarSheet />
-      </div>
+      <NavbarSheet />
     </div>
   );
 };
