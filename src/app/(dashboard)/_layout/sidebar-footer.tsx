@@ -7,7 +7,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
-import { startTransition, useTransition } from "react";
+import { useTransition } from "react";
 import { removeSession } from "@/lib/api/sessions";
 import { deleteSessionCookies } from "@/lib/cookies/delete-session-cookies";
 import { useRouter } from "next/navigation";

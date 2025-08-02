@@ -6,7 +6,6 @@ import {
 import { refreshSession, verifySession } from "./lib/api/sessions";
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
   const accessToken = request.cookies.get(ACCESS_TOKEN_COOKIE)?.value;
   const refreshToken = request.cookies.get(REFRESH_TOKEN_COOKIE)?.value;
   if (!accessToken || !refreshToken) {

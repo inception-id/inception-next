@@ -1,12 +1,8 @@
-import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
   SidebarHeader,
-  SidebarGroupLabel,
-  SidebarGroupContent,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
@@ -14,7 +10,6 @@ import {
 import Link from "next/link";
 import { LuHouse } from "react-icons/lu";
 import { SidebarFooterMenu } from "./sidebar-footer";
-import { ThemeToggle } from "@/components/custom-ui";
 // Menu items.
 const items = [
   {
