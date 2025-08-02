@@ -51,3 +51,25 @@ export const refreshSession = async (
     throw error;
   }
 };
+
+type RemoveSessionResponse = {
+  status: string;
+  sessionHandlesRevoked: string[];
+};
+
+export const removeSession = async (
+  userId: string,
+): Promise<ApiResponse<RemoveSessionResponse>> => {
+  try {
+    const res = await fetch(url + "/remove/" + userId, {
+      method: "POST",
+      headers: {
+        "x-api-key": env.API_KEY,
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};

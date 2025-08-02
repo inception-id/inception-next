@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { LoginForm } from "./form";
 import { useQuery } from "@tanstack/react-query";
-import { useVerifyUserEmailOption } from "@/lib/api/users-hooks";
+import { useVerifyUserEmailOption } from "@/lib/hooks/users";
 
 type LoginCardProps = {
   token?: string;

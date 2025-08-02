@@ -18,7 +18,7 @@ export async function middleware(request: NextRequest) {
   if (!isValidSession.data) {
     const newSession = await refreshSession(refreshToken);
 
-    if (newSession.data.accessToken && newSession.data.refreshToken) {
+    if (newSession.data?.accessToken && newSession.data?.refreshToken) {
       const response = NextResponse.next();
       response.cookies.set(
         ACCESS_TOKEN_COOKIE,

@@ -1,5 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import { verifyUserEmail } from "./users";
+import { verifyUserEmail } from "../api/users";
 import { toast } from "sonner";
 
 export const useVerifyUserEmailOption = (token?: string) => {
