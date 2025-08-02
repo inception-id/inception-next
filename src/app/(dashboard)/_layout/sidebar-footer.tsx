@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/tooltip";
 import { useTransition } from "react";
 import { removeSession } from "@/lib/api/sessions";
-import { deleteSessionCookies } from "@/lib/cookies/delete-session-cookies";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -24,15 +23,12 @@ export const SidebarFooterMenu = () => {
         if (data?.id) {
           const sessionRemoval = await removeSession(data?.id);
           if (sessionRemoval) {
-            await deleteSessionCookies();
-          } else {
-            await deleteSessionCookies();
+            toast.success("Logout successful");
           }
         }
       } catch (error) {
         console.error("Error removing session:", error);
       } finally {
-        toast.success("Logout successful");
         router.push("/auth/login");
       }
     });
