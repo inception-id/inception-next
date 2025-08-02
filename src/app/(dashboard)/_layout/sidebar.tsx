@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
@@ -12,6 +13,8 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { LuHouse } from "react-icons/lu";
+import { SidebarFooterMenu } from "./sidebar-footer";
+import { ThemeToggle } from "@/components/custom-ui";
 // Menu items.
 const items = [
   {
@@ -44,27 +47,24 @@ const items = [
 export const DashboardSidebar = () => {
   return (
     <Sidebar>
-      <SidebarHeader />
+      <SidebarHeader>INCEPTION</SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <Link href={item.url} title={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
+        <SidebarMenu>
+          {items.map((item) => (
+            <SidebarMenuItem key={item.title}>
+              <SidebarMenuButton asChild>
+                <Link href={item.url} title={item.title}>
+                  <item.icon />
+                  <span>{item.title}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <SidebarFooterMenu />
+      </SidebarFooter>
     </Sidebar>
   );
 };
