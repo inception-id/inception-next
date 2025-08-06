@@ -41,14 +41,14 @@ export const SidebarFooterMenu = () => {
       ) : (
         <span className="text-xs">
           <div className="font-semibold">
-            {new Date().toLocaleDateString("id-ID")}
+            {new Date().toLocaleDateString("id-ID", { dateStyle: "long" })}
           </div>
           <div>{data?.email && data.email}</div>
         </span>
       )}
 
       <Tooltip>
-        <TooltipTrigger>
+        <TooltipTrigger asChild>
           <Button
             disabled={isPending}
             variant={"ghost"}

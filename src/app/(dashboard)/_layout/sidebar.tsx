@@ -9,34 +9,20 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { LuHouse } from "react-icons/lu";
+import { MdWhatsapp } from "react-icons/md";
 import { SidebarFooterMenu } from "./sidebar-footer";
-// Menu items.
-const items = [
+
+export const SIDEBAR_ITEMS = [
   {
     title: "Home",
     url: "/dashboard",
     icon: LuHouse,
   },
-  // {
-  //   title: "Inbox",
-  //   url: "#",
-  //   icon: Inbox,
-  // },
-  // {
-  //   title: "Calendar",
-  //   url: "#",
-  //   icon: Calendar,
-  // },
-  // {
-  //   title: "Search",
-  //   url: "#",
-  //   icon: Search,
-  // },
-  // {
-  //   title: "Settings",
-  //   url: "#",
-  //   icon: Settings,
-  // },
+  {
+    title: "My Whatsapp",
+    url: "/dashboard/whatsapp",
+    icon: MdWhatsapp,
+  },
 ];
 
 export const DashboardSidebar = () => {
@@ -45,7 +31,7 @@ export const DashboardSidebar = () => {
       <SidebarHeader>INCEPTION</SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
-          {items.map((item) => (
+          {SIDEBAR_ITEMS.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild>
                 <Link href={item.url} title={item.title}>

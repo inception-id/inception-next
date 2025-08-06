@@ -1,5 +1,5 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { DashboardSidebar } from "./_layout";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { DashboardSidebar, DashboardNavbar } from "./_layout";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -9,8 +9,8 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <SidebarProvider>
       <DashboardSidebar />
-      <main>
-        <SidebarTrigger />
+      <main className="w-full">
+        <DashboardNavbar />
         {children}
       </main>
     </SidebarProvider>
