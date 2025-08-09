@@ -14,7 +14,6 @@ import { LuPlus, LuX } from "react-icons/lu";
 import { AddWhatsappForm } from "./form";
 import { useAddWhatsappStore } from "../../_hooks";
 import { useShallow } from "zustand/shallow";
-import QRCode from "react-qr-code";
 import { WhatsappQrCode } from "./whatsapp-qr-code";
 
 export const AddWhatsappDialog = () => {

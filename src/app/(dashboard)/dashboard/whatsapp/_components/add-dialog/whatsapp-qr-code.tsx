@@ -19,6 +19,7 @@ export const WhatsappQrCode = () => {
       }, 1000);
       return () => clearInterval(timer); // Cleanup on unmount
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft, showQr]);
 
   return (
