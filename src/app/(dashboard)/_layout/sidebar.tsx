@@ -1,3 +1,4 @@
+"use client";
 import {
   Sidebar,
   SidebarContent,
@@ -6,6 +7,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { LuHouse } from "react-icons/lu";
@@ -26,6 +28,7 @@ export const SIDEBAR_ITEMS = [
 ];
 
 export const DashboardSidebar = () => {
+  const { setOpenMobile } = useSidebar();
   return (
     <Sidebar>
       <SidebarHeader>INCEPTION</SidebarHeader>
@@ -34,7 +37,11 @@ export const DashboardSidebar = () => {
           {SIDEBAR_ITEMS.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild>
-                <Link href={item.url} title={item.title}>
+                <Link
+                  href={item.url}
+                  title={item.title}
+                  onClick={() => setOpenMobile(false)}
+                >
                   <item.icon />
                   <span>{item.title}</span>
                 </Link>
