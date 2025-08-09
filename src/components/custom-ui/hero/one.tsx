@@ -1,8 +1,15 @@
 "use client";
 import { motion } from "motion/react";
-import { HeroSectionProps } from "./type";
 import Image from "next/image";
+import { JSX } from "react";
 
+export type HeroSectionProps = {
+  title: string;
+  description: string;
+  imageSrc: string;
+  ctaOne?: JSX.Element;
+  ctaTwo?: JSX.Element;
+};
 export function HeroSectionOne({
   title,
   description,

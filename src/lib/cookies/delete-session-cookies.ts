@@ -3,12 +3,9 @@
 import { cookies } from "next/headers";
 import { ACCESS_TOKEN_COOKIE, REFRESH_TOKEN_COOKIE } from "./constant";
 
-export const setSessionCookies = async (
-  accessToken: string,
-  refreshToken: string,
-) => {
+export const deleteSessionCookies = async () => {
   const cookieStore = await cookies();
-  cookieStore.set(ACCESS_TOKEN_COOKIE, accessToken);
-  cookieStore.set(REFRESH_TOKEN_COOKIE, refreshToken);
+  cookieStore.delete(ACCESS_TOKEN_COOKIE);
+  cookieStore.delete(REFRESH_TOKEN_COOKIE);
   return cookieStore.toString();
 };

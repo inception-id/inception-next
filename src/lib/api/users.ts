@@ -1,8 +1,9 @@
 "use server";
 import { env } from "@/lib/env";
 import { ApiResponse } from "./types";
+import { SessionToken } from "./sessions";
 
-const url = new URL(env.API_URL + "/users");
+const url = env.NEXT_PUBLIC_API_URL + "/users";
 
 export type User = {
   id: string;
@@ -72,12 +73,6 @@ export const resetPassword = async (
   } catch (error) {
     throw error;
   }
-};
-
-type SessionToken = {
-  token: string;
-  expiry: number;
-  createdTime: number;
 };
 
 export type LoginUserResponse = {

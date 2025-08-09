@@ -29,7 +29,8 @@ jobs:
           build-args: |
             NEXT_PUBLIC_HOST_URL=${{ secrets.NEXT_PUBLIC_HOST_URL }}
             NEXT_PUBLIC_GA_ID=${{ secrets.NEXT_PUBLIC_GA_ID }}
-            API_URL=${{ secrets.API_URL }}
+            NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
             API_KEY=${{ secrets.API_KEY }}
+            NEXT_PUBLIC_API_EXPRESS_URL=${{ secrets.NEXT_PUBLIC_API_EXPRESS_URL }}
             NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
             SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
