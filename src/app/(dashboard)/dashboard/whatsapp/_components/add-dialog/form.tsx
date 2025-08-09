@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -14,6 +13,9 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
+import { createWhatsappSession } from "@/lib/api/whatsapp/client";
+import { toast } from "sonner";
+import { useAddWhatsappStore } from "../../_hooks";
 
 const formSchema = z.object({
   phone: z
@@ -21,13 +23,14 @@ const formSchema = z.object({
     .min(9, "Phone number must be at least 9 characters long")
     .max(13, "Phone number must be at most 13 characters long")
     .regex(
-      /^[08]\d*$/,
-      "Phone number must start with 0 or 8 and contains only numbers",
+      /^08\d*$/,
+      "Phone number must start with 08 and contains only numbers",
     )
     .transform((s) => (s.startsWith("0") ? s.slice(1) : s)),
 });
 
 export const AddWhatsappForm = () => {
+  const toggleQr = useAddWhatsappStore((state) => state.toggleQr);
   const [isPending, startTransition] = useTransition();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -35,13 +38,23 @@ export const AddWhatsappForm = () => {
       phone: "",
     },
   });
-  console.log(form);
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
-    // startTransition(async () => {
-    //   await new Promise((resolve) => setTimeout(resolve, 1000));
-    // });
+    startTransition(async () => {
+      try {
+        const whatsappSession = await createWhatsappSession(values.phone);
+        if (whatsappSession.status === 201) {
+          toggleQr(true, whatsappSession.data.qr);
+        } else {
+          toast.error(whatsappSession.message);
+        }
+      } catch (error) {
+        console.error(error);
+        toast.error(
+          "Failed to create Whatsapp session, please try again later",
+        );
+      }
+    });
   };
 
   return (

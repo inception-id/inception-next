@@ -7,9 +7,7 @@ export const env = createEnv({
    * Will throw if you access these variables on the client.
    */
   server: {
-    API_URL: z.string().min(1),
     API_KEY: z.string().min(1),
-    API_EXPRESS_URL: z.string().min(1),
     SENTRY_AUTH_TOKEN: z.string(),
   },
   /*
@@ -19,6 +17,8 @@ export const env = createEnv({
    */
   client: {
     NEXT_PUBLIC_HOST_URL: z.string().min(1),
+    NEXT_PUBLIC_API_URL: z.string().min(1),
+    NEXT_PUBLIC_API_EXPRESS_URL: z.string().min(1),
     NEXT_PUBLIC_GA_ID: z.string(),
     NEXT_PUBLIC_SENTRY_DSN: z.string(),
   },
@@ -31,9 +31,9 @@ export const env = createEnv({
   runtimeEnv: {
     NEXT_PUBLIC_HOST_URL: process.env.NEXT_PUBLIC_HOST_URL,
     NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
-    API_URL: process.env.API_URL,
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
     API_KEY: process.env.API_KEY,
-    API_EXPRESS_URL: process.env.API_EXPRESS_URL,
+    NEXT_PUBLIC_API_EXPRESS_URL: process.env.NEXT_PUBLIC_API_EXPRESS_URL,
     NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
     SENTRY_AUTH_TOKEN: process.env.SENTRY_AUTH_TOKEN,
   },

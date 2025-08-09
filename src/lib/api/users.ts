@@ -3,7 +3,7 @@ import { env } from "@/lib/env";
 import { ApiResponse } from "./types";
 import { SessionToken } from "./sessions";
 
-const url = env.API_URL + "/users";
+const url = env.NEXT_PUBLIC_API_URL + "/users";
 
 export type User = {
   id: string;

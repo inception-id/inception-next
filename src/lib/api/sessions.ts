@@ -2,7 +2,7 @@
 import { env } from "@/lib/env";
 import { ApiResponse } from "./types";
 
-const url = env.API_URL + "/sessions";
+const url = env.NEXT_PUBLIC_API_URL + "/sessions";
 
 export const verifySession = async (
   token: string,
