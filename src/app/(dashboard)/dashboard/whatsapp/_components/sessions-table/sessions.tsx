@@ -1,5 +1,4 @@
 import { findWhatsappSessions } from "@/lib/api/whatsapp/client";
-import { Suspense } from "react";
 import { MdWhatsapp } from "react-icons/md";
 import { SessionTable } from "./table";
 

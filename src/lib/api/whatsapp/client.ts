@@ -1,9 +1,6 @@
 import { env } from "@/lib/env";
 import { ApiResponse } from "../types";
 import { getTokenCookie } from "@/lib/cookies/get-token-cookie";
-import { decodeToken } from "@/lib/jwt";
-import { JwtPayload } from "jsonwebtoken";
-import { User } from "../users";
 
 export type WhatsappSession = {
   id: string;
