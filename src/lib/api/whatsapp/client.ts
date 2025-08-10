@@ -12,14 +12,13 @@ export const createWhatsappSession = async (
 ): Promise<ApiResponse<{ qr: string }>> => {
   try {
     const token = (await getTokenCookie()) as string;
-    const jwt = (await decodeToken(token)) as JwtPayload & User;
     const res = await fetch(url + "/sessions", {
       method: "POST",
       headers: {
         "x-access-token": token,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ userId: jwt.id, phone }),
+      body: JSON.stringify({ phone }),
     });
     return res.json();
   } catch (error) {
