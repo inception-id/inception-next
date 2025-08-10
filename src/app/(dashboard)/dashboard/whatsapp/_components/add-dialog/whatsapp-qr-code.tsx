@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useAddWhatsappStore } from "../../_hooks";
 import QRCode from "react-qr-code";
 
-export const WhatsappQrCode = () => {
+type WhatsappQrCodeProps = {
+  closeDialog: () => void;
+};
+
+export const WhatsappQrCode = ({ closeDialog }: WhatsappQrCodeProps) => {
   const { showQr, qrCode, toggleQr } = useAddWhatsappStore();
   const [timeLeft, setTimeLeft] = useState(30);
 
@@ -11,6 +15,7 @@ export const WhatsappQrCode = () => {
       if (timeLeft <= 0) {
         setTimeLeft(30);
         toggleQr(false, "");
+        closeDialog();
         return;
       }
 
