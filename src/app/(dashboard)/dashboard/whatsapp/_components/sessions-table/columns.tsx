@@ -7,34 +7,42 @@ import { Input } from "@/components/ui/input";
 import { LuEye } from "react-icons/lu";
 import { toast } from "sonner";
 
+type IdColumnProps = {
+  session: WhatsappSession;
+};
+
+const IdColumn = ({ session }: IdColumnProps) => {
+  const [show, setShow] = useState(false);
+  return (
+    <div className="flex items-center border rounded-md w-fit">
+      <Button
+        variant="ghost"
+        size="icon"
+        className="rounded-r-none"
+        onClick={() => setShow(!show)}
+      >
+        <LuEye />
+      </Button>
+      <Input
+        className="border-none rounded-l-none w-fit"
+        type={show ? "text" : "password"}
+        value={session.id}
+        readOnly
+        onClick={async () => {
+          await navigator.clipboard.writeText(session.id);
+          toast.info("ID copied to clipboard");
+        }}
+      />
+    </div>
+  );
+};
+
 export const TABLE_COLUMNS: ColumnDef<WhatsappSession>[] = [
   {
     header: "id",
     accessorKey: "id",
     cell: ({ row }) => {
-      const [show, setShow] = useState(false);
-      return (
-        <div className="flex items-center border rounded-md w-fit">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-r-none"
-            onClick={() => setShow(!show)}
-          >
-            <LuEye />
-          </Button>
-          <Input
-            className="border-none rounded-l-none w-fit"
-            type={show ? "text" : "password"}
-            value={row.original.id}
-            readOnly
-            onClick={async () => {
-              await navigator.clipboard.writeText(row.original.id);
-              toast.info("ID copied to clipboard");
-            }}
-          />
-        </div>
-      );
+      return <IdColumn session={row.original} />;
     },
   },
   {
