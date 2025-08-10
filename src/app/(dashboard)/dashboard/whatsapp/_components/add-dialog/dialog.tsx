@@ -17,7 +17,6 @@ import { useShallow } from "zustand/shallow";
 import { WhatsappQrCode } from "./whatsapp-qr-code";
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
-import { DialogProps } from "@radix-ui/react-dialog";
 
 export const AddWhatsappDialog = () => {
   const dialogCloseRef = useRef<HTMLButtonElement>(null);

@@ -52,3 +52,21 @@ export const findWhatsappSessions = async (): Promise<
     throw error;
   }
 };
+
+export const deleteWhatsappSession = async (
+  sessionId: string,
+): Promise<ApiResponse<WhatsappSession[]>> => {
+  try {
+    const token = (await getTokenCookie()) as string;
+    const res = await fetch(url + `/sessions/${sessionId}`, {
+      method: "DELETE",
+      headers: {
+        "x-access-token": token,
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};
