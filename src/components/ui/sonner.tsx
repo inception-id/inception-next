@@ -16,14 +16,14 @@ const Toaster = ({ ...props }: ToasterProps) => {
           description: "!text-foreground/50", // <-- Add your desired Tailwind class here
         },
       }}
-      // style={
-      //   {
-      //     "--normal-bg": "var(--foreground)",
-      //     "--normal-text": "var(--popover)",
-      //     "--normal-border": "var(--border)",
-      //     description: "var(--popover-foreground)",
-      //   } as React.CSSProperties
-      // }
+      style={
+        {
+          "--normal-bg": "var(--foreground)",
+          "--normal-text": "var(--popover)",
+          "--normal-border": "var(--border)",
+          description: "var(--popover-foreground)",
+        } as React.CSSProperties
+      }
       {...props}
     />
   );
