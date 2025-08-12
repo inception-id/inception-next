@@ -1,18 +1,6 @@
 import { Suspense } from "react";
-import { AddWhatsappDialog } from "./_components";
+import { AddWhatsappDialog, TableLoading } from "./_components";
 import { SessionsTable } from "./_components/sessions-table";
-
-const Loading = () => {
-  return (
-    <div className="w-full flex flex-col gap-4">
-      <div className="bg-accent animate-pulse rounded-md w-full h-10" />
-      <div className="bg-accent animate-pulse rounded-md w-full h-10" />
-      <div className="bg-accent animate-pulse rounded-md w-full h-10" />
-      <div className="bg-accent animate-pulse rounded-md w-full h-10" />
-      <div className="bg-accent animate-pulse rounded-md w-full h-10" />
-    </div>
-  );
-};
 
 const DashboardWhatsappPage = () => {
   return (
@@ -22,7 +10,7 @@ const DashboardWhatsappPage = () => {
         <AddWhatsappDialog />
       </div>
 
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<TableLoading />}>
         <SessionsTable />
       </Suspense>
     </div>

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { LuHouse } from "react-icons/lu";
-import { MdWhatsapp } from "react-icons/md";
+import { MdMessage, MdWhatsapp } from "react-icons/md";
 import { SidebarFooterMenu } from "./sidebar-footer";
 
 export const SIDEBAR_ITEMS = [
@@ -19,6 +19,11 @@ export const SIDEBAR_ITEMS = [
     title: "Home",
     url: "/dashboard",
     icon: LuHouse,
+  },
+  {
+    title: "Messages",
+    url: "/dashboard/whatsapp/messages",
+    icon: MdMessage,
   },
   {
     title: "My Whatsapp",

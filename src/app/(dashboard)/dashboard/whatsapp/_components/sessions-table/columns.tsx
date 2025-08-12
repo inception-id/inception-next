@@ -39,7 +39,7 @@ const IdColumn = ({ session }: IdColumnProps) => {
 
 export const TABLE_COLUMNS: ColumnDef<WhatsappSession>[] = [
   {
-    header: "id",
+    header: "Whatsapp Number ID",
     accessorKey: "id",
     cell: ({ row }) => {
       return <IdColumn session={row.original} />;
@@ -55,14 +55,6 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappSession>[] = [
     cell: ({ row }) => {
       const createdAt = row.original.created_at;
       return <span>{new Date(createdAt).toLocaleString("id-ID")}</span>;
-    },
-  },
-  {
-    header: "Updated At",
-    accessorKey: "updated_at",
-    cell: ({ row }) => {
-      const updatedAt = row.original.updated_at;
-      return <span>{new Date(updatedAt).toLocaleString("id-ID")}</span>;
     },
   },
   {

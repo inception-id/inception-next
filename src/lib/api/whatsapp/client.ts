@@ -11,6 +11,21 @@ export type WhatsappSession = {
   is_ready: boolean;
 };
 
+export enum WhatsappMessageType {
+  Development = "DEVELOPMENT",
+  Production = "PRODUCTION",
+}
+
+export type WhatsappMessage = {
+  id: string;
+  session_id: string;
+  created_at: string;
+  updated_at: string;
+  target_phone: string;
+  message_type: WhatsappMessageType;
+  text_message: string | null;
+};
+
 const url = env.NEXT_PUBLIC_API_EXPRESS_URL + "/whatsapp";
 
 export const createWhatsappSession = async (
@@ -57,6 +72,24 @@ export const deleteWhatsappSession = async (
     const token = (await getTokenCookie()) as string;
     const res = await fetch(url + `/sessions/${sessionId}`, {
       method: "DELETE",
+      headers: {
+        "x-access-token": token,
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const findWhatsappMessages = async (): Promise<
+  ApiResponse<WhatsappMessage[]>
+> => {
+  try {
+    const token = (await getTokenCookie()) as string;
+    const res = await fetch(url + "/messages", {
+      method: "GET",
       headers: {
         "x-access-token": token,
         "Content-Type": "application/json",
