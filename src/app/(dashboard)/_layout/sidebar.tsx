@@ -17,17 +17,17 @@ import { SidebarFooterMenu } from "./sidebar-footer";
 export const SIDEBAR_ITEMS = [
   {
     title: "Home",
-    url: "/dashboard",
+    url: "/dashboard/whatsapp",
     icon: LuHouse,
   },
   {
-    title: "Messages",
+    title: "Sent Messages",
     url: "/dashboard/whatsapp/messages",
     icon: MdMessage,
   },
   {
-    title: "My Whatsapp",
-    url: "/dashboard/whatsapp",
+    title: "My Numbers",
+    url: "/dashboard/whatsapp/numbers",
     icon: MdWhatsapp,
   },
 ];
