@@ -4,6 +4,7 @@ import {
 } from "@/lib/api/whatsapp/client";
 import { MdMessage, MdWhatsapp } from "react-icons/md";
 import { MessageTable } from "./table";
+import { PageFilter } from "./page-filter";
 
 type MessagesProps = {
   searchParams: FindWhatsappMessagesSearchParams;
@@ -12,10 +13,14 @@ type MessagesProps = {
 export const Messages = async ({ searchParams }: MessagesProps) => {
   const messages = await findWhatsappMessages(searchParams);
 
-  if (messages?.data?.messages) {
+  if (messages?.data) {
     return (
-      <div className="w-full h-[28rem] sm:h-[44rem] overflow-y-auto ">
+      <div className="w-full h-[28rem] sm:h-[44rem] overflow-y-auto flex flex-col gap-2">
         <MessageTable data={messages.data.messages} />
+        <PageFilter
+          totalPages={messages.data.pagination.totalPages}
+          page={messages.data.pagination.page}
+        />
       </div>
     );
   }
