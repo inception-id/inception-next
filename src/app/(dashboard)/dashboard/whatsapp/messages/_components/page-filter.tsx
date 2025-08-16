@@ -8,7 +8,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Pagination } from "@/lib/api/types";
-import { WhatsappMessageType } from "@/lib/api/whatsapp/client";
 import { useRouter, useSearchParams } from "next/navigation";
 
 type PageFilterProps = Pick<Pagination, "page" | "totalPages">;

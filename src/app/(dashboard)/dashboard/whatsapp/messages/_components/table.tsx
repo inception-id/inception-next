@@ -1,5 +1,5 @@
 "use client";
-import { WhatsappMessage, WhatsappSession } from "@/lib/api/whatsapp/client";
+import { WhatsappMessage } from "@/lib/api/whatsapp/client";
 import {
   flexRender,
   getCoreRowModel,
