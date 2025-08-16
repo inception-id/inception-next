@@ -83,12 +83,25 @@ export const deleteWhatsappSession = async (
   }
 };
 
-export const findWhatsappMessages = async (): Promise<
-  ApiResponse<WhatsappMessage[]>
-> => {
+export type FindWhatsappMessagesSearchParams = {
+  environment?: WhatsappMessageType;
+};
+
+export const findWhatsappMessages = async (
+  searchParams: FindWhatsappMessagesSearchParams,
+): Promise<ApiResponse<WhatsappMessage[]>> => {
   try {
     const token = (await getTokenCookie()) as string;
-    const res = await fetch(url + "/messages", {
+    const newSearchParams = new URLSearchParams();
+    if (searchParams) {
+      Object.entries(searchParams).forEach(([key, value]) => {
+        if (key) {
+          newSearchParams.set(key, value);
+        }
+      });
+    }
+
+    const res = await fetch(url + "/messages?" + newSearchParams.toString(), {
       method: "GET",
       headers: {
         "x-access-token": token,

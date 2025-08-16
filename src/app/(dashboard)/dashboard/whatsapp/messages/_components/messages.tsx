@@ -1,13 +1,20 @@
-import { findWhatsappMessages } from "@/lib/api/whatsapp/client";
+import {
+  findWhatsappMessages,
+  FindWhatsappMessagesSearchParams,
+} from "@/lib/api/whatsapp/client";
 import { MdMessage, MdWhatsapp } from "react-icons/md";
 import { MessageTable } from "./table";
 
-export const Messages = async () => {
-  const messages = await findWhatsappMessages();
+type MessagesProps = {
+  searchParams: FindWhatsappMessagesSearchParams;
+};
+
+export const Messages = async ({ searchParams }: MessagesProps) => {
+  const messages = await findWhatsappMessages(searchParams);
 
   if (messages?.data) {
     return (
-      <div className="w-full h-[34rem] sm:h-[50rem] overflow-y-auto">
+      <div className="w-full h-[28rem] sm:h-[44rem] overflow-y-auto ">
         <MessageTable data={messages.data} />
       </div>
     );
