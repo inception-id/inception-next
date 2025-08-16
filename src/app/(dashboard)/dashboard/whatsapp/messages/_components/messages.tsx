@@ -12,10 +12,10 @@ type MessagesProps = {
 export const Messages = async ({ searchParams }: MessagesProps) => {
   const messages = await findWhatsappMessages(searchParams);
 
-  if (messages?.data) {
+  if (messages?.data?.messages) {
     return (
       <div className="w-full h-[28rem] sm:h-[44rem] overflow-y-auto ">
-        <MessageTable data={messages.data} />
+        <MessageTable data={messages.data.messages} />
       </div>
     );
   }

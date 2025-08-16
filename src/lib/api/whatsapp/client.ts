@@ -1,5 +1,5 @@
 import { env } from "@/lib/env";
-import { ApiResponse } from "../types";
+import { ApiResponse, Pagination } from "../types";
 import { getTokenCookie } from "@/lib/cookies/get-token-cookie";
 
 export type WhatsappSession = {
@@ -89,7 +89,9 @@ export type FindWhatsappMessagesSearchParams = {
 
 export const findWhatsappMessages = async (
   searchParams: FindWhatsappMessagesSearchParams,
-): Promise<ApiResponse<WhatsappMessage[]>> => {
+): Promise<
+  ApiResponse<{ messages: WhatsappMessage[]; pagination: Pagination }>
+> => {
   try {
     const token = (await getTokenCookie()) as string;
     const newSearchParams = new URLSearchParams();

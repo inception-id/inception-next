@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { TableLoading } from "../_components";
-import { MessagesFilter, MessagesTable } from "./_components";
+import { MessagesTable, EnvironmentFilter } from "./_components";
 import { FindWhatsappMessagesSearchParams } from "@/lib/api/whatsapp/client";
 
 type WhatsappMessagesProps = {
@@ -11,8 +11,10 @@ const WhatsappMessages = async ({ searchParams }: WhatsappMessagesProps) => {
   const pageSearchParams = await searchParams;
   return (
     <div className="p-4 flex flex-col gap-4">
-      <h1 className="text-lg font-bold">Whatsapp Messages</h1>
-      <MessagesFilter />
+      <div className="flex items-center justify-between">
+        <h1 className="text-lg font-bold">Whatsapp Messages</h1>
+        <EnvironmentFilter />
+      </div>
       <Suspense fallback={<TableLoading />}>
         <MessagesTable searchParams={pageSearchParams} />
       </Suspense>
