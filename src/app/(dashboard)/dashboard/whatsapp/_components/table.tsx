@@ -1,8 +1,5 @@
 "use client";
-import {
-  WhatsappMessagesCount,
-  WhatsappSession,
-} from "@/lib/api/whatsapp/client";
+import { WhatsappMessagesCount } from "@/lib/api/whatsapp/client";
 import {
   flexRender,
   getCoreRowModel,

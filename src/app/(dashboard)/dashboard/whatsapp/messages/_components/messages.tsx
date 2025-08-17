@@ -2,7 +2,6 @@ import {
   findWhatsappMessages,
   FindWhatsappMessagesSearchParams,
 } from "@/lib/api/whatsapp/client";
-import { MdMessage } from "react-icons/md";
 import { MessageTable } from "./table";
 import { PageFilter } from "./page-filter";
 

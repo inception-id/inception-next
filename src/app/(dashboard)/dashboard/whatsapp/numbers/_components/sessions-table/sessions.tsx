@@ -1,5 +1,4 @@
 import { findWhatsappSessions } from "@/lib/api/whatsapp/client";
-import { MdWhatsapp } from "react-icons/md";
 import { SessionTable } from "./table";
 
 export const Sessions = async () => {

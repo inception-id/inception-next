@@ -1,5 +1,5 @@
 "use client"; // Error boundaries must be Client Components
-import { MdMessage, MdWhatsapp } from "react-icons/md";
+import { MdWhatsapp } from "react-icons/md";
 
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
