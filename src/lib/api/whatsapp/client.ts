@@ -116,11 +116,15 @@ export const findWhatsappMessages = async (
   }
 };
 
+export type WhatsappMessagesCount = {
+  year: number;
+  month: number;
+  total_records: number;
+};
+
 export const findWhatsappMessagesAllTimeCount = async (
   environment: WhatsappMessageType,
-): Promise<
-  ApiResponse<{ year: number; month: number; total_records: number }>
-> => {
+): Promise<ApiResponse<WhatsappMessagesCount[]>> => {
   try {
     const token = (await getTokenCookie()) as string;
     const newSearchParams = new URLSearchParams();
