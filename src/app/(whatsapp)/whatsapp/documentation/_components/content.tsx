@@ -6,15 +6,28 @@ const CURL = `curl
   --header 'Content-Type: application/json'
   --data '{
       "whatsappPhoneId": "29c3d8b2-...", // Your phone ID from registered number list (format: UUID)
-      "whatsappPhoneNumber": "821...", // Your registered phone number
-      "targetPhoneNumber": "821...", // Your client/target phone number
+      "whatsappPhoneNumber": "821...", // Your registered phone number, do not put 0 prefix
+      "targetPhoneNumber": "821...", // Your client/target phone number, do not put 0 prefix
       "message": "Hello World!", // Message you want to send
       "environment": "DEVELOPMENT" // Environment: DEVELOPMENT or PRODUCTION, must be uppercase
   }'`;
 
+const CURL_RESPONSE = `{
+    "status": 201, // HTTP Status
+    "data": {
+        "messageId": "e384b429-...", // Unique ID of each message (format: UUID)
+        "whatsappPhoneId": "63d35f18-...", // Your phone ID from registered number list (format: UUID)
+        "whatsappPhoneNumber": "821...", // Your registered phone number
+        "targetPhoneNumber": "821...", // Your client/target phone number
+        "message": "Hello World!", // Message you want to send
+        "environment": "DEVELOPMENT" // Environment: DEVELOPMENT or PRODUCTION
+    },
+    "message": "" // Will show if there's any error
+}`;
+
 export const Content = () => {
   return (
-    <div className="container mx-auto p-4">
+    <div>
       <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight text-balance">
         Inception Whatsapp API
       </h1>
@@ -148,9 +161,37 @@ export const Content = () => {
       <p className="leading-7 [&:not(:first-child)]:my-6">
         You can now send messages via REST API with POST method. Curl example:
       </p>
-      <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold whitespace-pre">
-        {CURL}
-      </code>
+      <div className="bg-muted w-fit max-w-screen overflow-x-auto">
+        <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold whitespace-pre">
+          {CURL}
+        </code>
+      </div>
+      <p className="leading-7 [&:not(:first-child)]:my-6">Example response:</p>
+      <div className="bg-muted w-fit max-w-screen overflow-x-auto">
+        <code className="bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold whitespace-pre">
+          {CURL_RESPONSE}
+        </code>
+      </div>
+
+      <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight mt-8">
+        Response Status:
+      </h3>
+      <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
+        <li>201: Created and your message is sent</li>
+        <li>
+          400: Something is wrong with your parameter, will show the error on
+          the message.
+        </li>
+        <li>
+          429: You reached your monthly rate limit. (Only for DEVELOPMENT
+          environment)
+        </li>
+        <li>500: Blame the error on our side</li>
+      </ul>
+
+      <p className="leading-7 [&:not(:first-child)]:my-6">
+        * As of now, you can only send messages to Indonesian number (+62)
+      </p>
     </div>
   );
 };
