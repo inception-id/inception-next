@@ -48,6 +48,20 @@ export const NavbarSheet = () => {
           >
             Home
           </Link>
+
+          <Link
+            href="/whatsapp/documentation"
+            className={cn(
+              buttonVariants({ variant: "link" }),
+              "w-full justify-start",
+            )}
+            onClick={() => {
+              sendGAEvent("event", "whatsapp_documentation");
+              setSheetOpen(false);
+            }}
+          >
+            Docs
+          </Link>
           <Link
             href="/whatsapp/pricing"
             className={cn(

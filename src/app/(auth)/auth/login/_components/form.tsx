@@ -49,7 +49,7 @@ export function LoginForm() {
           toast.success("Login successful.", {
             description: "Have a great day!",
           });
-          router.push("/dashboard");
+          router.push("/dashboard/whatsapp");
         } else if (loginSession.status === 403) {
           toast.warning("User email is not verified.", {
             description: "Please check your email for verification.",

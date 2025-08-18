@@ -15,11 +15,16 @@ import { AddWhatsappForm } from "./form";
 import { useAddWhatsappStore } from "../../_hooks";
 import { useShallow } from "zustand/shallow";
 import { WhatsappQrCode } from "./whatsapp-qr-code";
+import { useRouter } from "next/navigation";
+import React, { useRef } from "react";
 
 export const AddWhatsappDialog = () => {
+  const dialogCloseRef = useRef<HTMLButtonElement>(null);
+  const router = useRouter();
   const showQr = useAddWhatsappStore(useShallow((state) => state.showQr));
+
   return (
-    <Dialog>
+    <Dialog onOpenChange={() => router.refresh()}>
       <DialogTrigger className={cn(buttonVariants({ variant: "outline" }))}>
         <LuPlus />
         <span>Add a Number</span>
@@ -28,21 +33,26 @@ export const AddWhatsappDialog = () => {
         <DialogHeader>
           <div className="flex items-center justify-between">
             <DialogTitle className="text-left">
-              {showQr
-                ? "Scan the QR code to add your Whatsapp number."
-                : "Add Whatsapp Number"}
+              {showQr ? "Scan QR code" : "Add Whatsapp Number"}
             </DialogTitle>
             <DialogClose
+              ref={dialogCloseRef}
               className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
             >
               <LuX />
             </DialogClose>
           </div>
           <DialogDescription>
-            {showQr ? "QR is valid for 30 seconds." : ""}
+            {showQr
+              ? "QR is valid for 30 seconds, phone number will show in the list once connected"
+              : ""}
           </DialogDescription>
         </DialogHeader>
-        {showQr ? <WhatsappQrCode /> : <AddWhatsappForm />}
+        {showQr ? (
+          <WhatsappQrCode closeDialog={() => dialogCloseRef.current?.click()} />
+        ) : (
+          <AddWhatsappForm />
+        )}
       </DialogContent>
     </Dialog>
   );

@@ -11,18 +11,23 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { LuHouse } from "react-icons/lu";
-import { MdWhatsapp } from "react-icons/md";
+import { MdMessage, MdWhatsapp } from "react-icons/md";
 import { SidebarFooterMenu } from "./sidebar-footer";
 
 export const SIDEBAR_ITEMS = [
   {
     title: "Home",
-    url: "/dashboard",
+    url: "/dashboard/whatsapp",
     icon: LuHouse,
   },
   {
-    title: "My Whatsapp",
-    url: "/dashboard/whatsapp",
+    title: "Sent Messages",
+    url: "/dashboard/whatsapp/messages",
+    icon: MdMessage,
+  },
+  {
+    title: "My Numbers",
+    url: "/dashboard/whatsapp/numbers",
     icon: MdWhatsapp,
   },
 ];

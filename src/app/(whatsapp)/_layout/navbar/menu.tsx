@@ -16,6 +16,15 @@ export const NavbarMenu = () => {
       <NavigationMenuList className="gap-4">
         <NavigationMenuItem>
           <NavigationMenuLink
+            href="/whatsapp/documentation"
+            className={cn(buttonVariants({ variant: "link" }))}
+            onClick={() => sendGAEvent("event", "whatsapp_documentation")}
+          >
+            Docs
+          </NavigationMenuLink>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuLink
             href="/whatsapp/pricing"
             className={cn(buttonVariants({ variant: "link" }))}
             onClick={() => sendGAEvent("event", "whatsapp_pricing")}

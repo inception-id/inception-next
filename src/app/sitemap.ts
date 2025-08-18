@@ -15,5 +15,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${env.NEXT_PUBLIC_HOST_URL}/whatsapp/pricing`,
       lastModified: new Date(),
     },
+    {
+      url: `${env.NEXT_PUBLIC_HOST_URL}/whatsapp/documentation`,
+      lastModified: new Date(),
+    },
   ];
 }
