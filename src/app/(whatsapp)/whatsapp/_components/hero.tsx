@@ -22,7 +22,7 @@ export const HeroSection = () => {
       }
       ctaTwo={
         <Link
-          href="#"
+          href="/whatsapp/documentation"
           className={cn(buttonVariants({ size: "lg", variant: "outline" }))}
           onClick={() => sendGAEvent("whatsapp_documentation")}
         >
