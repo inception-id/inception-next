@@ -58,7 +58,7 @@ export const Pricing = ({
       id: "pro",
       name: "Pro",
       description: "For production",
-      monthlyPrice: "Rp. 1",
+      monthlyPrice: "Rp. 50",
       features: [
         { text: "Unlimited collaborators" },
         { text: "Advanced messaging" },
