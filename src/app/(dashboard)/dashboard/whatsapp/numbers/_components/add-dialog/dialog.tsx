@@ -17,6 +17,7 @@ import { useShallow } from "zustand/shallow";
 import { WhatsappQrCode } from "./whatsapp-qr-code";
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export const AddWhatsappDialog = () => {
   const dialogCloseRef = useRef<HTMLButtonElement>(null);
@@ -24,7 +25,14 @@ export const AddWhatsappDialog = () => {
   const showQr = useAddWhatsappStore(useShallow((state) => state.showQr));
 
   return (
-    <Dialog onOpenChange={() => router.refresh()}>
+    <Dialog
+      onOpenChange={(isOpen) => {
+        if (isOpen) {
+          sendGAEvent("event", "whatsapp_click_add_number");
+        }
+        router.refresh();
+      }}
+    >
       <DialogTrigger className={cn(buttonVariants({ variant: "outline" }))}>
         <LuPlus />
         <span>Add a Number</span>

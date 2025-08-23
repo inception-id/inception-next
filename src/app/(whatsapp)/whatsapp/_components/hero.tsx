@@ -8,8 +8,8 @@ import { HeroSectionOne } from "@/components/custom-ui";
 export const HeroSection = () => {
   return (
     <HeroSectionOne
-      title="Send Whatsapp Notification with Rp. 1"
-      description="That's right, you can send a Whatsapp notification with just Rp. 1"
+      title="Send Whatsapp Notification with Rp. 50"
+      description="That's right, you can send a Whatsapp notification with just Rp. 50"
       imageSrc="/images/whatsapp/hero.webp"
       ctaOne={
         <Link
