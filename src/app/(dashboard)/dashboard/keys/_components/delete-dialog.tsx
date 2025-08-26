@@ -10,10 +10,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { ApiKey, deleteApiKey } from "@/lib/api/api-keys";
-import {
-  deleteWhatsappSession,
-  WhatsappSession,
-} from "@/lib/api/whatsapp/client";
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 import { LuTrash2 } from "react-icons/lu";

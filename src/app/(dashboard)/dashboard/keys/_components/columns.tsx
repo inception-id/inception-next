@@ -1,4 +1,3 @@
-import { WhatsappSession } from "@/lib/api/whatsapp/client";
 import { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -6,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { LuEye } from "react-icons/lu";
 import { toast } from "sonner";
 import { ApiKey } from "@/lib/api/api-keys";
-import { ApiResponse } from "@/lib/api/types";
 import { DeleteDialog } from "./delete-dialog";
 
 type IdColumnProps = {
