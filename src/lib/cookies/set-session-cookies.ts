@@ -8,7 +8,7 @@ export const setSessionCookies = async (
   refreshToken: string,
 ) => {
   const cookieStore = await cookies();
-  cookieStore.set(ACCESS_TOKEN_COOKIE, accessToken);
-  cookieStore.set(REFRESH_TOKEN_COOKIE, refreshToken);
+  cookieStore.set(ACCESS_TOKEN_COOKIE, accessToken, { maxAge: 60 * 60 * 24 }); // 1 day
+  cookieStore.set(REFRESH_TOKEN_COOKIE, refreshToken, { maxAge: 60 * 60 * 24 });
   return cookieStore.toString();
 };

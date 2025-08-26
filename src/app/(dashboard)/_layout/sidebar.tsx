@@ -30,6 +30,11 @@ export const SIDEBAR_ITEMS = [
     url: "/dashboard/whatsapp/numbers",
     icon: MdWhatsapp,
   },
+  {
+    title: "API Keys",
+    url: "/dashboard/keys",
+    icon: MdWhatsapp,
+  },
 ];
 
 export const DashboardSidebar = () => {
