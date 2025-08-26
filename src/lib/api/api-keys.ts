@@ -43,3 +43,21 @@ export const findApiKeys = async (): Promise<ApiResponse<ApiKey[]>> => {
     throw error;
   }
 };
+
+export const deleteApiKey = async (
+  apiKeyId: string,
+): Promise<ApiResponse<string>> => {
+  try {
+    const token = (await getTokenCookie()) as string;
+    const res = await fetch(url + `/${apiKeyId}`, {
+      method: "DELETE",
+      headers: {
+        "x-access-token": token,
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};

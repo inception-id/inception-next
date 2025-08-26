@@ -1,7 +1,6 @@
 import { Suspense } from "react";
-import { CreateDialog } from "./_components";
+import { CreateDialog, Keys } from "./_components";
 import { TableLoading } from "@/components/custom-ui";
-import { Keys } from "./_components/keys";
 
 const ApiKeysPage = () => {
   return (

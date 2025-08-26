@@ -7,6 +7,7 @@ import { LuEye } from "react-icons/lu";
 import { toast } from "sonner";
 import { ApiKey } from "@/lib/api/api-keys";
 import { ApiResponse } from "@/lib/api/types";
+import { DeleteDialog } from "./delete-dialog";
 
 type IdColumnProps = {
   apiKey: ApiKey;
@@ -54,11 +55,11 @@ export const TABLE_COLUMNS: ColumnDef<ApiKey>[] = [
       return <span>{new Date(createdAt).toLocaleString("id-ID")}</span>;
     },
   },
-  // {
-  //   header: "",
-  //   accessorKey: "is_ready",
-  //   cell: ({ row }) => {
-  //     return <DeleteDialog session={row.original} />;
-  //   },
-  // },
+  {
+    header: "",
+    accessorKey: "updated_at",
+    cell: ({ row }) => {
+      return <DeleteDialog apiKey={row.original} />;
+    },
+  },
 ];
