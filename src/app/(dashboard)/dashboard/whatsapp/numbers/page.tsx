@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { AddWhatsappDialog } from "./_components";
 import { SessionsTable } from "./_components/sessions-table";
-import { TableLoading } from "../_components";
+import { TableLoading } from "@/components/custom-ui";
 
 const DashboardWhatsappPage = () => {
   return (

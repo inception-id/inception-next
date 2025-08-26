@@ -21,3 +21,25 @@ export const createApiKey = async (): Promise<ApiResponse<string>> => {
     throw error;
   }
 };
+
+export type ApiKey = {
+  id: string;
+  created_at: string;
+  updated_at: string;
+};
+
+export const findApiKeys = async (): Promise<ApiResponse<ApiKey[]>> => {
+  try {
+    const token = (await getTokenCookie()) as string;
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "x-access-token": token,
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};

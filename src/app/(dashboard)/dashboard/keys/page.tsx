@@ -1,4 +1,7 @@
+import { Suspense } from "react";
 import { CreateDialog } from "./_components";
+import { TableLoading } from "@/components/custom-ui";
+import { Keys } from "./_components/keys";
 
 const ApiKeysPage = () => {
   return (
@@ -6,8 +9,10 @@ const ApiKeysPage = () => {
       <div className="flex items-center justify-between">
         <h1 className="text-lg font-bold">API Keys</h1>
         <CreateDialog />
-        {/* <EnvironmentFilter /> */}
       </div>
+      <Suspense fallback={<TableLoading />}>
+        <Keys />
+      </Suspense>
     </div>
   );
 };

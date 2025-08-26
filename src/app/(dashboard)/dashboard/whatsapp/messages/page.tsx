@@ -1,7 +1,7 @@
 import { Suspense } from "react";
-import { TableLoading } from "../_components";
 import { MessagesTable, EnvironmentFilter } from "./_components";
 import { FindWhatsappMessagesSearchParams } from "@/lib/api/whatsapp/client";
+import { TableLoading } from "@/components/custom-ui";
 
 type WhatsappMessagesProps = {
   searchParams: Promise<FindWhatsappMessagesSearchParams>;
