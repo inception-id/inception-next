@@ -13,18 +13,25 @@ import {
 import { createApiKey } from "@/lib/api/api-keys";
 import { cn } from "@/lib/utils";
 import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { LuCopy, LuX } from "react-icons/lu";
 import { toast } from "sonner";
 
 export const CreateDialog = () => {
+  const router = useRouter();
   const [apiKey, setApiKey] = useState("");
   const mutation = useMutation({
     mutationFn: createApiKey,
     onSuccess: (data) => setApiKey(data.data),
   });
   return (
-    <Dialog onOpenChange={() => setApiKey("")}>
+    <Dialog
+      onOpenChange={() => {
+        setApiKey("");
+        router.refresh();
+      }}
+    >
       <DialogTrigger
         className={cn(buttonVariants())}
         onClick={() => mutation.mutate()}

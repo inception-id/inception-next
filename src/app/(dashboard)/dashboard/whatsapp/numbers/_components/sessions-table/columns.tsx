@@ -41,9 +41,6 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappSession>[] = [
   {
     header: "Whatsapp Number ID",
     accessorKey: "id",
-    cell: ({ row }) => {
-      return <IdColumn session={row.original} />;
-    },
   },
   {
     header: "Phone Number",

@@ -39,7 +39,7 @@ const IdColumn = ({ apiKey }: IdColumnProps) => {
 
 export const TABLE_COLUMNS: ColumnDef<ApiKey>[] = [
   {
-    header: "Key ID",
+    header: "Client ID",
     accessorKey: "id",
     cell: ({ row }) => {
       return <IdColumn apiKey={row.original} />;
