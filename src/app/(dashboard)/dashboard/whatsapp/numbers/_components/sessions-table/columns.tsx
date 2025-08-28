@@ -39,7 +39,7 @@ const IdColumn = ({ session }: IdColumnProps) => {
 
 export const TABLE_COLUMNS: ColumnDef<WhatsappSession>[] = [
   {
-    header: "Whatsapp Number ID",
+    header: "Whatsapp ID",
     accessorKey: "id",
   },
   {

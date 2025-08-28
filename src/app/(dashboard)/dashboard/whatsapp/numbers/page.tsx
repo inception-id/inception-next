@@ -7,7 +7,10 @@ const DashboardWhatsappPage = () => {
   return (
     <div className="p-4 flex flex-col gap-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-lg font-bold">My Whatsapp Numbers</h1>
+        <div className="grid">
+          <h1 className="text-lg font-bold">Whatsapp Numbers</h1>
+          <h2 className="text-xs">Your registered numbers</h2>
+        </div>
         <AddWhatsappDialog />
       </div>
 

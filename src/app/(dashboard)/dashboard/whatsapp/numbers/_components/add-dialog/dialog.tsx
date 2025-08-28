@@ -33,7 +33,7 @@ export const AddWhatsappDialog = () => {
         router.refresh();
       }}
     >
-      <DialogTrigger className={cn(buttonVariants({ variant: "outline" }))}>
+      <DialogTrigger className={cn(buttonVariants())}>
         <LuPlus />
         <span>Add a Number</span>
       </DialogTrigger>

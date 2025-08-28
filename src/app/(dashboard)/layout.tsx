@@ -9,7 +9,7 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <SidebarProvider>
       <DashboardSidebar />
-      <main className="w-full h-screen flex flex-col overflow-hidden">
+      <main className="w-full h-screen flex flex-col">
         <DashboardNavbar />
         <div className="w-full flex-1">{children}</div>
       </main>
