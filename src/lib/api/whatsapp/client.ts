@@ -145,3 +145,51 @@ export const findWhatsappMessagesAllTimeCount = async (
     throw error;
   }
 };
+
+export enum WhatsappEnvironment {
+  Development = "DEVELOPMENT",
+  Production = "PRODUCTION",
+}
+
+export type WhatsappNotification = {
+  id: string;
+  session_id: string;
+  user_id: string;
+  created_at: string;
+  updated_at: string;
+  target_phone: string;
+  text_message: string | null;
+  environment: WhatsappEnvironment;
+};
+
+export const findWhatsappNotifications = async (
+  searchParams: FindWhatsappMessagesSearchParams,
+): Promise<
+  ApiResponse<{ notifications: WhatsappNotification[]; pagination: Pagination }>
+> => {
+  try {
+    const token = (await getTokenCookie()) as string;
+    const newSearchParams = new URLSearchParams();
+    if (searchParams) {
+      Object.entries(searchParams).forEach(([key, value]) => {
+        if (key) {
+          newSearchParams.set(key, value);
+        }
+      });
+    }
+
+    const res = await fetch(
+      url + "/notifications?" + newSearchParams.toString(),
+      {
+        method: "GET",
+        headers: {
+          "x-access-token": token,
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};

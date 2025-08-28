@@ -11,7 +11,12 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { LuHouse, LuKey } from "react-icons/lu";
-import { MdMessage, MdWhatsapp } from "react-icons/md";
+import {
+  MdMessage,
+  MdSpeaker,
+  MdSpeakerPhone,
+  MdWhatsapp,
+} from "react-icons/md";
 import { SidebarFooterMenu } from "./sidebar-footer";
 
 export const SIDEBAR_ITEMS = [
@@ -19,6 +24,11 @@ export const SIDEBAR_ITEMS = [
     title: "Home",
     url: "/dashboard/whatsapp",
     icon: LuHouse,
+  },
+  {
+    title: "Sent Notifications",
+    url: "/dashboard/whatsapp/notifications",
+    icon: MdSpeakerPhone,
   },
   {
     title: "Sent Messages",
