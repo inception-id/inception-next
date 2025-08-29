@@ -1,5 +1,4 @@
 import {
-  findWhatsappMessages,
   FindWhatsappMessagesSearchParams,
   findWhatsappNotifications,
 } from "@/lib/api/whatsapp/client";

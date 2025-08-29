@@ -9,13 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-import {
-  LuArrowBigRightDash,
-  LuEye,
-  LuKey,
-  LuMailQuestion,
-  LuPlus,
-} from "react-icons/lu";
+import { LuKey, LuPlus } from "react-icons/lu";
 
 const WhatsappDashboard = () => {
   return (

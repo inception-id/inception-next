@@ -1,7 +1,4 @@
-import Link from "next/link";
 import { Content, Faq, TableOfContent } from "./_components";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 const WhatsappDocumentation = () => {
   return (

@@ -11,14 +11,8 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { LuBook, LuHouse, LuKey } from "react-icons/lu";
-import {
-  MdMessage,
-  MdSpeaker,
-  MdSpeakerPhone,
-  MdWhatsapp,
-} from "react-icons/md";
+import { MdMessage, MdSpeakerPhone, MdWhatsapp } from "react-icons/md";
 import { SidebarFooterMenu } from "./sidebar-footer";
-import { it } from "node:test";
 
 export const SIDEBAR_ITEMS = [
   {

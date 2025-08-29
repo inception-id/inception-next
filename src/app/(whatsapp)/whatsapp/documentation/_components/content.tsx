@@ -66,8 +66,8 @@ export const Content = () => {
         Inception Whatsapp API
       </h1>
       <p className="text-muted-foreground text-xl leading-7 [&:not(:first-child)]:my-6">
-        Send Whatsapp message/notification via REST API to your client's phone
-        number.
+        Send Whatsapp message/notification via REST API to your client&apos;s
+        phone number.
       </p>
       <h2
         className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0"
