@@ -28,12 +28,14 @@ export const TableOfContent = () => {
         <div
           role="button"
           className="py-2 w-full underline hover:text-blue-700 cursor-pointer"
+          onClick={() => router.push("#wa-inception")}
         >
           3. Sending message/notification via Inception number
         </div>
         <div
           role="button"
           className="py-2 w-full underline hover:text-blue-700 cursor-pointer"
+          onClick={() => router.push("#wa-self")}
         >
           4. Sending message/notification with your number
         </div>

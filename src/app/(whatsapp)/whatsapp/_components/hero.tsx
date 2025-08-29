@@ -9,7 +9,7 @@ export const HeroSection = () => {
   return (
     <HeroSectionOne
       title="Send Whatsapp Notification with Rp. 50"
-      description="That's right, you can send a Whatsapp notification with just Rp. 50"
+      description="Official REST API partner, send Whatsapp Notification with Rp. 50 per message"
       imageSrc="/images/whatsapp/hero.webp"
       ctaOne={
         <Link

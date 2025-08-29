@@ -36,35 +36,25 @@ interface Pricing2Props {
 
 export const Pricing = ({
   heading = "Pricing",
-  description = "Check out our affordable pricing plans",
+  description = "Every user will have DEVELOPMENT and PRODUCTION environment benefits",
   plans = [
     {
-      id: "plus",
-      name: "Plus",
-      description: "For development use",
+      id: "development",
+      name: "DEVELOPMENT",
+      description: "For testing & development",
       monthlyPrice: "Rp. 0",
-      features: [
-        { text: "Up to 5 collaborators" },
-        { text: "Basic messaging function" },
-        { text: "Community support" },
-        { text: "100 message per month" },
-      ],
+      features: [{ text: "500 message limit per month" }],
       button: {
         text: "Start New Game",
         url: "/auth/login",
       },
     },
     {
-      id: "pro",
-      name: "Pro",
+      id: "production",
+      name: "PRODUCTION",
       description: "For production",
       monthlyPrice: "Rp. 50",
-      features: [
-        { text: "Unlimited collaborators" },
-        { text: "Advanced messaging" },
-        { text: "Priority support" },
-        { text: "Unlimited messages" },
-      ],
+      features: [{ text: "Unlimited messages" }],
       button: {
         text: "Continue",
         url: "/auth/login",
