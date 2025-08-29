@@ -21,7 +21,7 @@ const FAQ = [
   {
     question: "What's the rate limit for Inception Whatsapp API?",
     answer:
-      "100x per month for DEVELOPMENT. No rate limit for PRODUCTION environment.",
+      "500x per month for DEVELOPMENT. No rate limit for PRODUCTION environment.",
   },
   {
     question: "How to pay for  PRODUCTION environment?",
@@ -33,10 +33,10 @@ export const Faq = () => {
   return (
     <div>
       <h2
-        id="faq"
-        className="scroll-m-20 border-b pb-2 mb-4 text-3xl font-semibold tracking-tight first:mt-0"
+        className="scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight first:mt-0 mt-6"
+        id="status-code"
       >
-        FAQ
+        6. FAQ
       </h2>
 
       <Accordion type="multiple">

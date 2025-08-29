@@ -116,22 +116,40 @@ export const findWhatsappMessages = async (
   }
 };
 
-export type WhatsappMessagesCount = {
-  year: number;
-  month: number;
-  total_records: number;
+export enum WhatsappEnvironment {
+  Development = "DEVELOPMENT",
+  Production = "PRODUCTION",
+}
+
+export type WhatsappNotification = {
+  id: string;
+  session_id: string;
+  user_id: string;
+  created_at: string;
+  updated_at: string;
+  target_phone: string;
+  text_message: string | null;
+  environment: WhatsappEnvironment;
 };
 
-export const findWhatsappMessagesAllTimeCount = async (
-  environment: WhatsappMessageType,
-): Promise<ApiResponse<WhatsappMessagesCount[]>> => {
+export const findWhatsappNotifications = async (
+  searchParams: FindWhatsappMessagesSearchParams,
+): Promise<
+  ApiResponse<{ notifications: WhatsappNotification[]; pagination: Pagination }>
+> => {
   try {
     const token = (await getTokenCookie()) as string;
     const newSearchParams = new URLSearchParams();
-    newSearchParams.set("environment", environment);
+    if (searchParams) {
+      Object.entries(searchParams).forEach(([key, value]) => {
+        if (key) {
+          newSearchParams.set(key, value);
+        }
+      });
+    }
 
     const res = await fetch(
-      url + "/messages/count?" + newSearchParams.toString(),
+      url + "/notifications?" + newSearchParams.toString(),
       {
         method: "GET",
         headers: {

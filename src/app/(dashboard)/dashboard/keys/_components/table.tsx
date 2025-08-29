@@ -1,5 +1,4 @@
 "use client";
-import { WhatsappMessagesCount } from "@/lib/api/whatsapp/client";
 import {
   flexRender,
   getCoreRowModel,
@@ -14,12 +13,13 @@ import {
   TableCell,
   TableHeader,
 } from "@/components/ui/table";
+import { ApiKey } from "@/lib/api/api-keys";
 
-interface MessageCountTableProps {
-  data: WhatsappMessagesCount[];
+interface ApiKeyTableProps {
+  data: ApiKey[];
 }
 
-export const MessageCountTable = ({ data }: MessageCountTableProps) => {
+export const ApiKeyTable = ({ data }: ApiKeyTableProps) => {
   const table = useReactTable({
     data,
     columns: TABLE_COLUMNS,
@@ -27,7 +27,7 @@ export const MessageCountTable = ({ data }: MessageCountTableProps) => {
   });
 
   return (
-    <Table className="lg:max-h-[50rem] overflow-y-auto">
+    <Table>
       <TableHeader>
         {table.getHeaderGroups().map((headerGroup) => (
           <TableRow key={headerGroup.id}>

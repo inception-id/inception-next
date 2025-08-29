@@ -32,6 +32,7 @@ export const NavbarSheet = () => {
           <SheetTitle>INCEPTION</SheetTitle>
           <SheetClose
             className={cn(buttonVariants({ variant: "ghost" }), "ml-auto")}
+            onClick={() => setSheetOpen(false)}
           >
             <LuX />
           </SheetClose>
