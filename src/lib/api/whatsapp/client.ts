@@ -163,3 +163,32 @@ export const findWhatsappNotifications = async (
     throw error;
   }
 };
+
+export type AllTimeWhatsappCount = {
+  year: string;
+  month: string;
+  count: string;
+  environment: WhatsappEnvironment;
+};
+
+export const countAllTimeWhatsappMessagesAndNotifications = async (): Promise<
+  ApiResponse<{
+    notifications: AllTimeWhatsappCount[];
+    messages: AllTimeWhatsappCount[];
+  }>
+> => {
+  try {
+    const token = (await getTokenCookie()) as string;
+
+    const res = await fetch(url + "/all-time-counts", {
+      method: "GET",
+      headers: {
+        "x-access-token": token,
+        "Content-Type": "application/json",
+      },
+    });
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};
