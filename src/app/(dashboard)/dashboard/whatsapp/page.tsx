@@ -1,15 +1,3 @@
-// const C
-
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Link from "next/link";
-import { LuKey, LuPlus } from "react-icons/lu";
 import { AllTimeCount, MenuCards } from "./_components";
 
 const WhatsappDashboard = () => {
