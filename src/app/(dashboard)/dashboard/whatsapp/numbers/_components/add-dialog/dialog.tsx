@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 import { LuPlus, LuX } from "react-icons/lu";
 import { AddWhatsappForm } from "./form";
 import { useAddWhatsappStore } from "../../_hooks";
-import { useShallow } from "zustand/shallow";
 import { WhatsappQrCode } from "./whatsapp-qr-code";
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
