@@ -13,6 +13,7 @@ const NOTIFICATION_CURL = `
       "targetPhoneNumber": "821xxx", // Your Client Phone Number, don't put 0 prefix
       "message": "Hello World!", // Your message
       "environment": "DEVELOPMENT" // Environment: PRODUCTION or DEVELOPMENT
+      "countryCode": "62" // Country code of your client's phone number, do not put 0 prefix (OPTIONAL: default is 62)
   }'
 `;
 
@@ -24,6 +25,7 @@ const NOTIFICATION_RESPONSE = `
           "targetPhoneNumber": "821xxx", // Your client's phone number
           "message": "Hello World!", // Your message
           "environment": "DEVELOPMENT" // Environment: PRODUCTION or DEVELOPMENT
+          "countryCode": "62" // Country code of your client's phone number
       },
       "message": "CREATED"
   }
@@ -43,6 +45,7 @@ const CURL = `
       "targetPhoneNumber": "821xxxx", // Your client's phone number, don't put 0 prefix
       "message": "Hello World!", // Your message
       "environment": "DEVELOPMENT" // Environment: PRODUCTION or DEVELOPMENT
+      "countryCode": "62" // Country code of your client's phone number, do not put 0 prefix (OPTIONAL: default is 62)
   }'
 `;
 
@@ -55,6 +58,7 @@ const CURL_RESPONSE = `{
         "targetPhoneNumber": "821...", // Your client's phone number
         "message": "Hello World!", // Your message
         "environment": "DEVELOPMENT" // Environment: PRODUCTION or DEVELOPMENT
+        "countryCode": "62" // Country code of your client's phone number
     },
     "message": "" // Will show if there's any error
 }`;

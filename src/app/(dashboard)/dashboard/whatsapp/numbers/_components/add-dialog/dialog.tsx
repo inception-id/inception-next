@@ -22,15 +22,17 @@ import { sendGAEvent } from "@next/third-parties/google";
 export const AddWhatsappDialog = () => {
   const dialogCloseRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
-  const showQr = useAddWhatsappStore(useShallow((state) => state.showQr));
+  const { showQr, toggleQr } = useAddWhatsappStore();
 
   return (
     <Dialog
       onOpenChange={(isOpen) => {
         if (isOpen) {
           sendGAEvent("event", "whatsapp_click_add_number");
+        } else {
+          toggleQr(false, "");
+          router.refresh();
         }
-        router.refresh();
       }}
     >
       <DialogTrigger className={cn(buttonVariants())}>

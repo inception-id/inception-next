@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import Link from "next/link";
 
 const FAQ = [
   {
@@ -12,7 +13,19 @@ const FAQ = [
   },
   {
     question: "Can I send a message to non Indonesian (+62) phone number?",
-    answer: "No, it's in development currently.",
+    answer: (
+      <div>
+        Yes, see{" "}
+        <Link
+          href="https://en.wikipedia.org/wiki/List_of_telephone_country_codes"
+          target="_blank"
+          className="underline text-blue-600"
+        >
+          List of Telephone Country Codes
+        </Link>
+        .
+      </div>
+    ),
   },
   {
     question: "Can I send another message type other than text?",

@@ -23,6 +23,10 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
     accessorKey: "session_id",
   },
   {
+    header: "Country Code",
+    accessorKey: "country_code",
+  },
+  {
     header: "To",
     accessorKey: "target_phone",
   },
