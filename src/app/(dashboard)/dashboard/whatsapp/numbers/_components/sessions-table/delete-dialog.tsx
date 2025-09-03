@@ -44,13 +44,14 @@ export const DeleteDialog = ({ session }: DeleteDialog) => {
                 const whatsapp = await deleteWhatsappSession(session.id);
                 if (whatsapp.status === 200) {
                   toast.success("Whatsapp Number Deleted Successfully");
-                  router.refresh();
                 } else {
                   toast.error("Failed to delete Whatsapp Number");
                 }
               } catch (error) {
                 console.error(error);
                 toast.error("Failed to delete Whatsapp Number");
+              } finally {
+                router.refresh();
               }
             }}
             className={cn(buttonVariants({ variant: "destructive" }))}

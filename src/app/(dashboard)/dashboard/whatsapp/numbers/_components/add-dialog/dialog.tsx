@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 import { LuPlus, LuX } from "react-icons/lu";
 import { AddWhatsappForm } from "./form";
 import { useAddWhatsappStore } from "../../_hooks";
-import { useShallow } from "zustand/shallow";
 import { WhatsappQrCode } from "./whatsapp-qr-code";
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
@@ -22,15 +21,17 @@ import { sendGAEvent } from "@next/third-parties/google";
 export const AddWhatsappDialog = () => {
   const dialogCloseRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
-  const showQr = useAddWhatsappStore(useShallow((state) => state.showQr));
+  const { showQr, toggleQr } = useAddWhatsappStore();
 
   return (
     <Dialog
       onOpenChange={(isOpen) => {
         if (isOpen) {
           sendGAEvent("event", "whatsapp_click_add_number");
+        } else {
+          toggleQr(false, "");
+          router.refresh();
         }
-        router.refresh();
       }}
     >
       <DialogTrigger className={cn(buttonVariants())}>

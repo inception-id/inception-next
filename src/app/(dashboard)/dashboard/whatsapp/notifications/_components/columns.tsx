@@ -18,6 +18,11 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappNotification>[] = [
     header: "Environment",
     accessorKey: "environment",
   },
+
+  {
+    header: "Country Code",
+    accessorKey: "country_code",
+  },
   {
     header: "To",
     accessorKey: "target_phone",
