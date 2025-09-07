@@ -10,11 +10,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { LuPen, LuPlus, LuX } from "react-icons/lu";
-import { useAddWhatsappStore } from "../../_hooks";
+import { LuPen, LuX } from "react-icons/lu";
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
-import { sendGAEvent } from "@next/third-parties/google";
 import { EditWhatsappForm } from "./form";
 import { WhatsappSession } from "@/lib/api/whatsapp/client";
 

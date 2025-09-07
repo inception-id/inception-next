@@ -14,12 +14,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import {
-  createWhatsappSession,
   updateWhatsappSession,
   WhatsappSession,
 } from "@/lib/api/whatsapp/client";
 import { toast } from "sonner";
-import { useAddWhatsappStore } from "../../_hooks";
 
 const formSchema = z.object({
   hourly_limit: z.string().min(1, "Hourly limit can not be empty"),
@@ -45,7 +43,6 @@ export const EditWhatsappForm = ({
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
     startTransition(async () => {
       try {
         const updatedSession = await updateWhatsappSession(session.id, {
