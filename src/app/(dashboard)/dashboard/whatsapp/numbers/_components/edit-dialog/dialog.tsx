@@ -10,39 +10,39 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
-import { LuPlus, LuX } from "react-icons/lu";
-import { AddWhatsappForm } from "./form";
+import { LuPen, LuPlus, LuX } from "react-icons/lu";
 import { useAddWhatsappStore } from "../../_hooks";
-import { WhatsappQrCode } from "./whatsapp-qr-code";
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
 import { sendGAEvent } from "@next/third-parties/google";
+import { EditWhatsappForm } from "./form";
+import { WhatsappSession } from "@/lib/api/whatsapp/client";
 
-export const AddWhatsappDialog = () => {
+type EditWhatsappDialogProps = {
+  session: WhatsappSession;
+};
+
+export const EditWhatsappDialog = ({ session }: EditWhatsappDialogProps) => {
   const dialogCloseRef = useRef<HTMLButtonElement>(null);
   const router = useRouter();
-  const { showQr, toggleQr } = useAddWhatsappStore();
 
   return (
     <Dialog
       onOpenChange={(isOpen) => {
-        if (isOpen) {
-          sendGAEvent("event", "whatsapp_click_add_number");
-        } else {
-          toggleQr(false, "");
+        if (!isOpen) {
           router.refresh();
         }
       }}
     >
       <DialogTrigger className={cn(buttonVariants())}>
-        <LuPlus />
-        <span>Add a Number</span>
+        <LuPen />
+        Edit
       </DialogTrigger>
-      <DialogContent className={cn(showQr && "bg-foreground text-background")}>
+      <DialogContent>
         <DialogHeader>
           <div className="flex items-center justify-between">
             <DialogTitle className="text-left">
-              {showQr ? "Scan QR code" : "Add Whatsapp Number"}
+              Edit Whatsapp Number
             </DialogTitle>
             <DialogClose
               ref={dialogCloseRef}
@@ -52,16 +52,13 @@ export const AddWhatsappDialog = () => {
             </DialogClose>
           </div>
           <DialogDescription>
-            {showQr
-              ? "QR is valid for 30 seconds, phone number will show in the list once connected"
-              : ""}
+            Edit Hourly and Daily request limits for your Whatsapp number.
           </DialogDescription>
         </DialogHeader>
-        {showQr ? (
-          <WhatsappQrCode closeDialog={() => dialogCloseRef.current?.click()} />
-        ) : (
-          <AddWhatsappForm />
-        )}
+        <EditWhatsappForm
+          session={session}
+          onCloseClick={() => dialogCloseRef.current?.click()}
+        />
       </DialogContent>
     </Dialog>
   );
