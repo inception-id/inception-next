@@ -10,7 +10,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
-import { LuBook, LuHouse, LuKey } from "react-icons/lu";
+import { LuBook, LuDollarSign, LuHouse, LuKey } from "react-icons/lu";
 import { MdMessage, MdSpeakerPhone, MdWhatsapp } from "react-icons/md";
 import { SidebarFooterMenu } from "./sidebar-footer";
 
@@ -44,6 +44,12 @@ export const SIDEBAR_ITEMS = [
     url: "/dashboard/keys",
     icon: LuKey,
     isBlank: false,
+  },
+  {
+    title: "Pricing",
+    url: "/whatsapp/pricing",
+    icon: LuDollarSign,
+    isBlank: true,
   },
   {
     title: "Documentation",

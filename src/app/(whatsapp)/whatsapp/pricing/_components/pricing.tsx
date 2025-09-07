@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { LuCircleCheck } from "react-icons/lu";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { sendGAEvent } from "@next/third-parties/google";
 
 interface PricingFeature {
   text: string;
@@ -21,6 +22,7 @@ interface PricingPlan {
   name: string;
   description: string;
   monthlyPrice: string;
+  priceUnit: string;
   features: PricingFeature[];
   button: {
     text: string;
@@ -36,27 +38,52 @@ interface Pricing2Props {
 
 export const Pricing = ({
   heading = "Pricing",
-  description = "Every user will have DEVELOPMENT and PRODUCTION environment benefits",
+  description = "Start with development, and choose production according to your needs,",
   plans = [
     {
-      id: "development",
+      id: "pricing_development",
       name: "DEVELOPMENT",
       description: "For testing & development",
       monthlyPrice: "Rp. 0",
-      features: [{ text: "500 message limit per month" }],
+      priceUnit: "msg",
+      features: [
+        { text: "500 free messages per month" },
+        { text: "Automatically applied for every user" },
+      ],
       button: {
-        text: "Start New Game",
+        text: "Start Development",
         url: "/auth/login",
       },
     },
     {
-      id: "production",
+      id: "pricing_pay_after_use",
       name: "PRODUCTION",
-      description: "For production",
+      description: "Pay after use",
       monthlyPrice: "Rp. 50",
-      features: [{ text: "Unlimited messages" }],
+      priceUnit: "msg",
+      features: [
+        { text: "Unlimited messages" },
+        { text: "Billed monthly" },
+        { text: "Calculated per message/notification" },
+      ],
       button: {
-        text: "Continue",
+        text: "Continue with Pay after use",
+        url: "/auth/login",
+      },
+    },
+    {
+      id: "pricing_subscription",
+      name: "PRODUCTION",
+      description: "Monthly Subscription",
+      monthlyPrice: "Rp. 50.000",
+      priceUnit: "month",
+      features: [
+        { text: "Unlimited messages" },
+        { text: "Billed monthly" },
+        { text: "All features in one subscription" },
+      ],
+      button: {
+        text: "Continue with Monthly Subscription",
         url: "/auth/login",
       },
     },
@@ -88,7 +115,7 @@ export const Pricing = ({
                       {plan.monthlyPrice}
                     </span>
                     <span className="text-2xl font-semibold text-muted-foreground">
-                      /msg
+                      /{plan.priceUnit}
                     </span>
                   </div>
                 </CardHeader>
@@ -116,6 +143,7 @@ export const Pricing = ({
                     href={plan.button.url}
                     target="_blank"
                     className={cn(buttonVariants(), "w-full")}
+                    onClick={() => sendGAEvent("event", plan.id)}
                   >
                     {plan.button.text}
                   </Link>

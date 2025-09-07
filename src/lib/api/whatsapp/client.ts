@@ -9,6 +9,8 @@ export type WhatsappSession = {
   updated_at: string;
   phone: string;
   is_ready: boolean;
+  hourly_limit: number;
+  daily_limit: number;
 };
 
 export enum WhatsappMessageType {
@@ -77,6 +79,26 @@ export const deleteWhatsappSession = async (
         "x-access-token": token,
         "Content-Type": "application/json",
       },
+    });
+    return res.json();
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const updateWhatsappSession = async (
+  sessionId: string,
+  payload: Pick<WhatsappSession, "daily_limit" | "hourly_limit">,
+): Promise<ApiResponse<WhatsappSession>> => {
+  try {
+    const token = (await getTokenCookie()) as string;
+    const res = await fetch(url + `/sessions/${sessionId}`, {
+      method: "PUT",
+      headers: {
+        "x-access-token": token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
     });
     return res.json();
   } catch (error) {

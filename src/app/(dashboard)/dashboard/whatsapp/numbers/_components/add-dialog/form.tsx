@@ -20,12 +20,7 @@ import { useAddWhatsappStore } from "../../_hooks";
 const formSchema = z.object({
   phone: z
     .string()
-    .min(9, "Phone number must be at least 9 characters long")
-    .max(13, "Phone number must be at most 13 characters long")
-    .regex(
-      /^08\d*$/,
-      "Phone number must start with 08 and contains only numbers",
-    )
+    .min(1, "Phone number can not be empty")
     .transform((s) => (s.startsWith("0") ? s.slice(1) : s)),
 });
 
@@ -87,7 +82,7 @@ export const AddWhatsappForm = () => {
           disabled={isPending}
           className={cn("cursor-pointer", isPending && "animate-pulse")}
         >
-          {isPending ? "Loading..." : "Continue"}
+          {isPending ? "Verifying, please wait..." : "Continue"}
         </Button>
       </form>
     </Form>

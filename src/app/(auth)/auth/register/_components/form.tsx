@@ -19,15 +19,9 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
 const phoneField = z
-  .union([
-    z
-      .string()
-      .min(10, "Phone number must be at least 10 characters long")
-      .max(13, "Phone number must be at most 13 characters long")
-      .regex(/^[08]/, "Phone number must start with 0 or 8")
-      .transform((s) => (s.startsWith("0") ? s.slice(1) : s)),
-    z.literal(""),
-  ])
+  .string()
+  .regex(/^[0-9]+$/, "Phone Number must be a set of numbers")
+  .transform((s) => (s.startsWith("0") ? s.slice(1) : s))
   .optional()
   .transform((val) => (val === "" ? undefined : val));
 
