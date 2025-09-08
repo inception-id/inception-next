@@ -13,18 +13,13 @@ export type WhatsappSession = {
   daily_limit: number;
 };
 
-export enum WhatsappMessageType {
-  Development = "DEVELOPMENT",
-  Production = "PRODUCTION",
-}
-
 export type WhatsappMessage = {
   id: string;
   session_id: string;
   created_at: string;
   updated_at: string;
   target_phone: string;
-  message_type: WhatsappMessageType;
+  environment: WhatsappEnvironment;
   text_message: string | null;
   country_code: string;
 };
@@ -107,7 +102,7 @@ export const updateWhatsappSession = async (
 };
 
 export type FindWhatsappMessagesSearchParams = {
-  environment?: WhatsappMessageType;
+  environment?: WhatsappEnvironment;
 };
 
 export const findWhatsappMessages = async (

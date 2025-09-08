@@ -6,15 +6,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { WhatsappMessageType } from "@/lib/api/whatsapp/client";
+import { WhatsappEnvironment } from "@/lib/api/whatsapp/client";
 import { useRouter, useSearchParams } from "next/navigation";
 
 export const EnvironmentFilter = () => {
   const searchParams = useSearchParams();
   const environmentParams = searchParams.get("environment") as string;
   const environment =
-    environmentParams === WhatsappMessageType.Development.toString() ||
-    environmentParams === WhatsappMessageType.Production.toString()
+    environmentParams === WhatsappEnvironment.Development.toString() ||
+    environmentParams === WhatsappEnvironment.Production.toString()
       ? environmentParams
       : "ALL";
   const router = useRouter();
@@ -39,10 +39,10 @@ export const EnvironmentFilter = () => {
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="ALL">All Environment</SelectItem>
-        <SelectItem value={WhatsappMessageType.Development}>
+        <SelectItem value={WhatsappEnvironment.Development}>
           Development
         </SelectItem>
-        <SelectItem value={WhatsappMessageType.Production}>
+        <SelectItem value={WhatsappEnvironment.Production}>
           Production
         </SelectItem>
       </SelectContent>
