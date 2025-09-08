@@ -16,7 +16,7 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
   },
   {
     header: "Environment",
-    accessorKey: "message_type",
+    accessorKey: "environment",
   },
   {
     header: "Whatsapp Number ID",
