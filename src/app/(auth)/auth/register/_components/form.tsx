@@ -18,20 +18,12 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
-const phoneField = z
-  .string()
-  .regex(/^[0-9]+$/, "Phone Number must be a set of numbers")
-  .transform((s) => (s.startsWith("0") ? s.slice(1) : s))
-  .optional()
-  .transform((val) => (val === "" ? undefined : val));
-
 const formSchema = z
   .object({
     email: z
       .string()
       .min(1, "Email can't be empty.")
       .email("Invalid email address."),
-    phone: phoneField,
     password: z.string().min(1, "Password can't be empty."),
     repassword: z.string().min(1, "Re-type Password can't be empty."),
   })
@@ -47,7 +39,6 @@ export function RegisterForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: "",
-      phone: "",
       password: "",
       repassword: "",
     },
@@ -89,24 +80,6 @@ export function RegisterForm() {
                   type="email"
                   required
                   {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="phone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Phone (optional)</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  placeholder="08"
-                  type="number"
-                  className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                 />
               </FormControl>
               <FormMessage />
