@@ -1,134 +1,120 @@
 import { env } from "@/lib/env";
 import Image from "next/image";
 import Link from "next/link";
-
-interface MenuItem {
-  title: string;
-  links: {
-    text: string;
-    url: string;
-  }[];
-}
-
-interface Footer2Props {
-  logo?: {
-    url: string;
-    src: string;
-    alt: string;
-    title: string;
-  };
-  tagline?: string;
-  menuItems?: MenuItem[];
-  copyright?: string;
-  bottomLinks?: {
-    text: string;
-    url: string;
-  }[];
-}
-
-export const Footer = ({
-  logo = {
-    src: "/images/inception.png",
-    alt: "INCEPTION Whatsapp Notification",
-    title: "INCEPTION",
-    url: env.NEXT_PUBLIC_HOST_URL,
+import { LuFacebook, LuInstagram, LuLinkedin, LuTwitter } from "react-icons/lu";
+import { FaThreads, FaTiktok } from "react-icons/fa6";
+const links = [
+  {
+    title: "Features",
+    href: "/whatsapp/documentation",
   },
-  tagline = "Building foolish, creative, and generous products",
-  menuItems = [
-    {
-      title: "Product",
-      links: [
-        { text: "Overview", url: "#" },
-        { text: "Pricing", url: "#" },
-        { text: "Marketplace", url: "#" },
-        { text: "Features", url: "#" },
-        { text: "Integrations", url: "#" },
-        { text: "Pricing", url: "#" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { text: "About", url: "#" },
-        { text: "Team", url: "#" },
-        { text: "Blog", url: "#" },
-        { text: "Careers", url: "#" },
-        { text: "Contact", url: "#" },
-        { text: "Privacy", url: "#" },
-      ],
-    },
-    {
-      title: "Resources",
-      links: [
-        { text: "Help", url: "#" },
-        { text: "Sales", url: "#" },
-        { text: "Advertise", url: "#" },
-      ],
-    },
-    {
-      title: "Social",
-      links: [
-        { text: "Twitter", url: "#" },
-        { text: "Instagram", url: "#" },
-        { text: "LinkedIn", url: "#" },
-      ],
-    },
-  ],
-  copyright = `© ${new Date().getFullYear()} inception.id All rights reserved.`,
-  bottomLinks = [
-    { text: "Terms and Conditions", url: "#" },
-    { text: "Privacy Policy", url: "#" },
-  ],
-}: Footer2Props) => {
+  {
+    title: "Solution",
+    href: "/whatsapp/documentation",
+  },
+  {
+    title: "Customers",
+    href: "#",
+  },
+  {
+    title: "Pricing",
+    href: "/whatsapp/pricing",
+  },
+  {
+    title: "Help",
+    href: "#",
+  },
+  {
+    title: "About",
+    href: "#",
+  },
+];
+
+export const Footer = () => {
   return (
-    <section className="py-32 px-4">
-      <div className="container mx-auto">
-        <footer>
-          <div className="grid grid-cols-2 gap-8 lg:grid-cols-6">
-            <div className="col-span-2 mb-8 lg:mb-0">
-              <div className="flex items-center gap-2 lg:justify-start">
-                <Link href="/">
-                  <Image
-                    src={logo.src}
-                    alt={logo.alt}
-                    title={logo.title}
-                    className="h-10"
-                    width={25}
-                    height={25}
-                  />
-                  <div className="text-xl">{logo.title}</div>
-                </Link>
-              </div>
-              <p className="mt-4 font-bold">{tagline}</p>
-            </div>
-            {menuItems.map((section, sectionIdx) => (
-              <div key={sectionIdx}>
-                <h3 className="mb-4 font-bold">{section.title}</h3>
-                <ul className="text-muted-foreground space-y-4">
-                  {section.links.map((link, linkIdx) => (
-                    <li
-                      key={linkIdx}
-                      className="hover:text-primary font-medium"
-                    >
-                      <a href={link.url}>{link.text}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <div className="text-muted-foreground mt-24 flex flex-col justify-between gap-4 border-t pt-8 text-sm font-medium md:flex-row md:items-center">
-            <p>{copyright}</p>
-            <ul className="flex gap-4">
-              {bottomLinks.map((link, linkIdx) => (
-                <li key={linkIdx} className="hover:text-primary underline">
-                  <a href={link.url}>{link.text}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </footer>
+    <footer className="py-16">
+      <div className="mx-auto max-w-5xl px-6">
+        <Link href="/" aria-label="go home" className="mx-auto block size-fit">
+          <Image
+            src="/images/inception.png"
+            alt="Inception Logo"
+            width={100}
+            height={100}
+          />
+        </Link>
+
+        <div className="my-8 flex flex-wrap justify-center gap-6">
+          {links.map((link, index) => (
+            <Link
+              key={index}
+              href={link.href}
+              className="text-muted-foreground hover:text-primary block duration-150"
+            >
+              <span>{link.title}</span>
+            </Link>
+          ))}
+        </div>
+        <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
+          <Link
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X/Twitter"
+            className="text-muted-foreground hover:text-primary block"
+          >
+            <LuTwitter />
+          </Link>
+          <Link
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="text-muted-foreground hover:text-primary block"
+          >
+            <LuLinkedin />
+          </Link>
+          <Link
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            className="text-muted-foreground hover:text-primary block"
+          >
+            <LuFacebook />
+          </Link>
+          <Link
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Threads"
+            className="text-muted-foreground hover:text-primary block"
+          >
+            <FaThreads />
+          </Link>
+          <Link
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="text-muted-foreground hover:text-primary block"
+          >
+            <LuInstagram />
+          </Link>
+          <Link
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TikTok"
+            className="text-muted-foreground hover:text-primary block"
+          >
+            <FaTiktok />
+          </Link>
+        </div>
+        <span className="text-muted-foreground block text-center text-sm">
+          {" "}
+          © {new Date().getFullYear()} INCEPTION.ID, All rights reserved
+        </span>
       </div>
-    </section>
+    </footer>
   );
 };
