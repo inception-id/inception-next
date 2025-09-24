@@ -12,11 +12,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 export const EnvironmentFilter = () => {
   const searchParams = useSearchParams();
   const environmentParams = searchParams.get("environment") as string;
-  const environment =
-    environmentParams === WhatsappEnvironment.Development.toString() ||
-    environmentParams === WhatsappEnvironment.Production.toString()
-      ? environmentParams
-      : "ALL";
+  const environment = environmentParams ? environmentParams : "ALL";
   const router = useRouter();
 
   return (
