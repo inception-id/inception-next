@@ -47,7 +47,7 @@ export const TableOfContent = () => {
             <AccordionTrigger>2. Send via Inception number</AccordionTrigger>
             <AccordionContent className="flex flex-col">
               <Link
-                href="notification-single"
+                href="#notification-single"
                 className={cn(
                   buttonVariants({ variant: "link" }),
                   "justify-start",
@@ -91,13 +91,22 @@ export const TableOfContent = () => {
           </AccordionItem>
         </Accordion>
         <Link
+          href="#status-codes"
+          className={cn(
+            buttonVariants({ variant: "link" }),
+            "justify-start px-0 w-full",
+          )}
+        >
+          4. Status Codes
+        </Link>
+        <Link
           href="#faq"
           className={cn(
             buttonVariants({ variant: "link" }),
             "justify-start px-0 w-full",
           )}
         >
-          4. FAQ
+          5. FAQ
         </Link>
       </CardContent>
     </Card>
