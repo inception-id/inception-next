@@ -1,6 +1,6 @@
 "use client";
 import { LuCopy } from "react-icons/lu";
-import { Button } from "../../../../../../components/ui/button";
+import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
 type CurlCardProps = {

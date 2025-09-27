@@ -16,6 +16,28 @@ const singleCurlRequest = `
   }'
 `;
 
+const multiCurlRequest = `
+  curl
+  --location 'https://api.inception.id/whatsapp/notifications/batch'
+  --header 'x-client-id: xxx'
+  --header 'x-api-key: xxx'
+  --header 'Content-Type: application/json'
+  --data '[
+    {
+      "targetPhoneNumber": "812xxx",
+      "message": "Hello World!",
+      "environment": "DEVELOPMENT",
+      "countryCode": "62"
+    },
+    {
+      "targetPhoneNumber": "817xxx",
+      "message": "Hello World 2!",
+      "environment": "DEVELOPMENT",
+      "countryCode": "62"
+    }
+  ]'
+`;
+
 const HEADER = [
   {
     key: "x-client-id",
@@ -69,6 +91,16 @@ const singleCurlResponse = `
           "status": "DELIVERED"
       },
       "message": "DELIVERED"
+  }
+`;
+
+const multiCurlResponse = `
+  {
+      "status": 200,
+      "data": {
+        "count": 2
+      },
+      "message": "PENDING"
   }
 `;
 
@@ -149,6 +181,48 @@ export const NotificationContent = () => {
       </h4>
       <CurlCard code={singleCurlResponse} />
       <JsonTable json={JSON_DATA} />
+
+      <h3
+        id="notification-multiple"
+        className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight"
+      >
+        2.2 Send multiple messages/notifications
+      </h3>
+      <p className="leading-7 [&:not(:first-child)]:mt-6">
+        The curl data for single and multiple request is similar except for the
+        body parameter. For multiple request, the body parameter is a JSON array
+        containing multiple JSON objects representing multiple
+        messages/notifications.
+      </p>
+      <p className="leading-7 [&:not(:first-child)]:mt-6">
+        Please note that the request received via <b>/batch</b> endpoints will
+        have PENDING status by default. That means the message will be queued
+        and sent later. Queue runs every 10 minutes.
+      </p>
+      <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+        REQUEST
+      </h4>
+      <CurlCard code={multiCurlRequest} />
+      <CurlTable
+        url="https://api.inception.id/whatsapp/notifications/batch"
+        method="POST"
+        headers={HEADER}
+        body={BODY}
+      />
+
+      <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+        RESPONSE
+      </h4>
+      <CurlCard code={multiCurlResponse} />
+      <JsonTable
+        json={[
+          {
+            key: "count",
+            value: "number",
+            description: "Number of messages in the request array",
+          },
+        ]}
+      />
     </div>
   );
 };
