@@ -4,36 +4,45 @@ import { JsonTable } from "./json-table";
 
 const singleCurlRequest = `
   curl
-  --location 'https://api.inception.id/whatsapp/notifications'
+  --location 'https://api.inception.id/whatsapp/messages'
   --header 'x-client-id: xxx'
   --header 'x-api-key: xxx'
   --header 'Content-Type: application/json'
   --data '{
-      "targetPhoneNumber": "812xxx",
+      "whatsappPhoneId": "xxx-xxx-xxx",
+      "whatsappPhoneNumber": "812xxx",
       "message": "Hello World!",
+      "targetPhoneNumber": "813xxx",
+      "countryCode": "62",
       "environment": "DEVELOPMENT",
-      "countryCode": "62"
+      "sendNow": true
   }'
 `;
 
 const multiCurlRequest = `
   curl
-  --location 'https://api.inception.id/whatsapp/notifications/batch'
+  --location 'https://api.inception.id/whatsapp/messages/batch'
   --header 'x-client-id: xxx'
   --header 'x-api-key: xxx'
   --header 'Content-Type: application/json'
   --data '[
     {
-      "targetPhoneNumber": "812xxx",
+      "whatsappPhoneId": "xxx-xxx-xxx",
+      "whatsappPhoneNumber": "812xxx",
       "message": "Hello World!",
+      "targetPhoneNumber": "813xxx",
+      "countryCode": "62",
       "environment": "DEVELOPMENT",
-      "countryCode": "62"
+      "sendNow": true
     },
     {
-      "targetPhoneNumber": "817xxx",
+      "whatsappPhoneId": "xxx-xxx-xxx",
+      "whatsappPhoneNumber": "812xxx",
       "message": "Hello World 2!",
+      "targetPhoneNumber": "814xxx",
+      "countryCode": "62",
       "environment": "DEVELOPMENT",
-      "countryCode": "62"
+      "sendNow": true
     }
   ]'
 `;
@@ -52,6 +61,16 @@ const HEADER = [
 ];
 
 const BODY = [
+  {
+    key: "whatsappPhoneId",
+    value: "uuid",
+    description: "whatappPhoneId of your registered phone number",
+  },
+  {
+    key: "whatsappPhoneNumber",
+    value: "phone number",
+    description: "Your registered phone number",
+  },
   {
     key: "message",
     value: "string",
@@ -75,6 +94,11 @@ const BODY = [
     description:
       "Development environment is the free version of Inception. If the message count has reached the monthly limit, the default will be PRODUCTION.",
   },
+  {
+    key: "sendNow (OPTIONAL)",
+    value: "boolean (Default: true)",
+    description: "Whether to send the message immediately or not.",
+  },
 ];
 
 const singleCurlResponse = `
@@ -82,6 +106,7 @@ const singleCurlResponse = `
       "status": 200,
       "data": {
           "id": "xxx-xxx-xxx-xxx",
+          session_id": "xxx-xxx-xxx-xxx",
           "created_at": "2025-09-27T01:27:10.606Z",
           "updated_at": "2025-09-27T01:27:10.606Z",
           "target_phone": "812xxx",
@@ -109,6 +134,11 @@ const JSON_DATA = [
     key: "id",
     value: "uuid",
     description: "Unique identifier for the message",
+  },
+  {
+    key: "session_id",
+    value: "uuid",
+    description: "Your whatappPhoneId",
   },
   {
     key: "created_at",
@@ -149,33 +179,58 @@ const JSON_DATA = [
   },
 ];
 
-export const NotificationContent = () => {
+export const MessageContent = () => {
   return (
     <div>
       <h2 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors">
-        2. Send via Inception number
+        3. Send with your number
       </h2>
+
       <p className="leading-7 [&:not(:first-child)]:mt-6">
         Upon obtaining the <b>x-client-id</b> and <b>x-api-key</b>, you can send
-        a message/notification via REST API. Here's how to send with our number:
+        a message/notification via REST API. Before that, you need to register
+        your number to our system and <b>does not need to be verified</b>.
       </p>
 
       <h3
-        id="notification-single"
+        id="message-add"
         className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight"
       >
-        2.1 Send one message/notification
+        3.1 Add your number
       </h3>
+
+      <p className="leading-7 [&:not(:first-child)]:mt-6">
+        Click <b>My Numbers</b> on the sidebar, then click <b>Add a Number</b>{" "}
+        on the top right corner. A popup will appear asking for your phone
+        number and showing a verification QR. After your number shows on the
+        page, you can proceed to send a message/notification.
+      </p>
+
+      <h3
+        id="message-single"
+        className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight"
+      >
+        3.2 Send one message/notification
+      </h3>
+
+      <p className="leading-7 [&:not(:first-child)]:mt-6">
+        To send a message/notification, we implemented a queue system to prevent
+        your number getting banned from sending too many messages. However,
+        users can opt in to bypass our queue system with the <b>sendNow</b>{" "}
+        parameter.
+      </p>
       <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
         REQUEST
       </h4>
       <CurlCard code={singleCurlRequest} />
+
       <CurlTable
-        url="https://api.inception.id/whatsapp/notifications"
+        url="https://api.inception.id/whatsapp/messages"
         method="POST"
         headers={HEADER}
         body={BODY}
       />
+
       <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
         RESPONSE
       </h4>
@@ -183,10 +238,10 @@ export const NotificationContent = () => {
       <JsonTable json={JSON_DATA} />
 
       <h3
-        id="notification-multiple"
+        id="message-multiple"
         className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight"
       >
-        2.2 Send multiple messages/notifications
+        3.3 Send multiple messages/notifications
       </h3>
       <p className="leading-7 [&:not(:first-child)]:mt-6">
         The curl data for single and multiple request is similar except for the
@@ -204,7 +259,7 @@ export const NotificationContent = () => {
       </h4>
       <CurlCard code={multiCurlRequest} />
       <CurlTable
-        url="https://api.inception.id/whatsapp/notifications/batch"
+        url="https://api.inception.id/whatsapp/messages/batch"
         method="POST"
         headers={HEADER}
         body={BODY}

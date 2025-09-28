@@ -70,7 +70,7 @@ export const TableOfContent = () => {
             <AccordionTrigger>3. Send with your number</AccordionTrigger>
             <AccordionContent className="flex flex-col">
               <Link
-                href="message-add"
+                href="#message-add"
                 className={cn(
                   buttonVariants({ variant: "link" }),
                   "justify-start",
@@ -79,7 +79,7 @@ export const TableOfContent = () => {
                 3.1 Add your number
               </Link>
               <Link
-                href="message-single"
+                href="#message-single"
                 className={cn(
                   buttonVariants({ variant: "link" }),
                   "justify-start",
@@ -88,7 +88,7 @@ export const TableOfContent = () => {
                 3.2 Send one message/notification
               </Link>
               <Link
-                href="message-multiple"
+                href="#message-multiple"
                 className={cn(
                   buttonVariants({ variant: "link" }),
                   "justify-start",
@@ -107,15 +107,6 @@ export const TableOfContent = () => {
           )}
         >
           4. Status Codes
-        </Link>
-        <Link
-          href="#faq"
-          className={cn(
-            buttonVariants({ variant: "link" }),
-            "justify-start px-0 w-full",
-          )}
-        >
-          5. FAQ
         </Link>
       </CardContent>
     </Card>
