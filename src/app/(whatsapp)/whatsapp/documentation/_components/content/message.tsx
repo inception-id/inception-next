@@ -208,7 +208,7 @@ export const MessageContent = () => {
       </p>
 
       <Image
-        src="/images/whatsapp/documentation/numbers-1.png"
+        src="/images/whatsapp/documentation/numbers.png"
         alt="dashboard"
         width={1024}
         height={768}
