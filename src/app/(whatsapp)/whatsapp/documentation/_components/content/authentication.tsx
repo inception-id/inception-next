@@ -54,7 +54,7 @@ export const AuthenticationContent = () => {
         the popup closed.
       </p>
       <Image
-        src="/images/whatsapp/documentation/dashboard.png"
+        src="/images/whatsapp/documentation/api-key-1.png"
         alt="dashboard"
         width={1024}
         height={768}
