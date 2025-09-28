@@ -38,7 +38,7 @@ export const AddWhatsappDialog = () => {
         <LuPlus />
         <span>Add a Number</span>
       </DialogTrigger>
-      <DialogContent className={cn(showQr && "bg-foreground text-background")}>
+      <DialogContent className={cn(showQr && "bg-white text-black")}>
         <DialogHeader>
           <div className="flex items-center justify-between">
             <DialogTitle className="text-left">

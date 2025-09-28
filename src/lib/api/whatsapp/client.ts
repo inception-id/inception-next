@@ -13,6 +13,17 @@ export type WhatsappSession = {
   daily_limit: number;
 };
 
+export enum WhatsappEnvironment {
+  Development = "DEVELOPMENT",
+  Production = "PRODUCTION",
+}
+
+export enum WhatsappStatus {
+  Pending = "PENDING",
+  Delivered = "DELIVERED",
+  Failed = "FAILED",
+}
+
 export type WhatsappMessage = {
   id: string;
   session_id: string;
@@ -22,6 +33,7 @@ export type WhatsappMessage = {
   environment: WhatsappEnvironment;
   text_message: string | null;
   country_code: string;
+  status: WhatsappStatus | null;
 };
 
 const url = env.NEXT_PUBLIC_API_EXPRESS_URL + "/whatsapp";
@@ -81,26 +93,6 @@ export const deleteWhatsappSession = async (
   }
 };
 
-export const updateWhatsappSession = async (
-  sessionId: string,
-  payload: Pick<WhatsappSession, "daily_limit" | "hourly_limit">,
-): Promise<ApiResponse<WhatsappSession>> => {
-  try {
-    const token = (await getTokenCookie()) as string;
-    const res = await fetch(url + `/sessions/${sessionId}`, {
-      method: "PUT",
-      headers: {
-        "x-access-token": token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-    return res.json();
-  } catch (error) {
-    throw error;
-  }
-};
-
 export type FindWhatsappMessagesSearchParams = {
   environment?: WhatsappEnvironment;
 };
@@ -134,11 +126,6 @@ export const findWhatsappMessages = async (
   }
 };
 
-export enum WhatsappEnvironment {
-  Development = "DEVELOPMENT",
-  Production = "PRODUCTION",
-}
-
 export type WhatsappNotification = {
   id: string;
   session_id: string;
@@ -149,6 +136,7 @@ export type WhatsappNotification = {
   text_message: string | null;
   environment: WhatsappEnvironment;
   country_code: string;
+  status: WhatsappStatus | null;
 };
 
 export const findWhatsappNotifications = async (

@@ -82,7 +82,7 @@ export const AddWhatsappForm = () => {
           disabled={isPending}
           className={cn("cursor-pointer", isPending && "animate-pulse")}
         >
-          {isPending ? "Verifying, please wait..." : "Continue"}
+          {isPending ? "Checking, please wait..." : "Continue"}
         </Button>
       </form>
     </Form>
