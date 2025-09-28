@@ -9,10 +9,8 @@ import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export const TableOfContent = () => {
-  const router = useRouter();
   return (
     <Card className="w-full max-w-sm h-fit gap-0">
       <CardHeader>

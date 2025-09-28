@@ -157,7 +157,8 @@ export const NotificationContent = () => {
       </h2>
       <p className="leading-7 [&:not(:first-child)]:mt-6">
         Upon obtaining the <b>x-client-id</b> and <b>x-api-key</b>, you can send
-        a message/notification via REST API. Here's how to send with our number:
+        a message/notification via REST API. Here&apos;s how to send with our
+        number:
       </p>
 
       <h3

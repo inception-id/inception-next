@@ -1,4 +1,3 @@
-import { env } from "@/lib/env";
 import Image from "next/image";
 import Link from "next/link";
 import { LuFacebook, LuInstagram, LuLinkedin, LuTwitter } from "react-icons/lu";

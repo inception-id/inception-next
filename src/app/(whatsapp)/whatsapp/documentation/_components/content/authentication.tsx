@@ -8,7 +8,8 @@ export const AuthenticationContent = () => {
         Inception Whatsapp API
       </h1>
       <p className="text-muted-foreground text-[1.05rem] text-balance sm:text-base">
-        Send messages/notification via REST API to your client's phone number.
+        Send messages/notification via REST API to your client&apos;s phone
+        number.
       </p>
       <h2 className="mt-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
         1. Authentication
