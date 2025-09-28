@@ -1,6 +1,7 @@
 import { CurlCard } from "./curl-card";
 import { CurlTable } from "./curl-table";
 import { JsonTable } from "./json-table";
+import Image from "next/image";
 
 const singleCurlRequest = `
   curl
@@ -205,6 +206,14 @@ export const MessageContent = () => {
         number and showing a verification QR. After your number shows on the
         page, you can proceed to send a message/notification.
       </p>
+
+      <Image
+        src="/images/whatsapp/documentation/numbers-1.png"
+        alt="dashboard"
+        width={1024}
+        height={768}
+        className="mt-6 w-full h-auto object-cover"
+      />
 
       <h3
         id="message-single"
