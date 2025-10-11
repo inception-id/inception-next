@@ -13,8 +13,6 @@ import Link from "next/link";
 import { LuBook, LuDollarSign, LuHouse, LuKey } from "react-icons/lu";
 import { MdMessage, MdSpeakerPhone, MdWhatsapp } from "react-icons/md";
 import { SidebarFooterMenu } from "./sidebar-footer";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 
 export const SIDEBAR_ITEMS = [
   {
