@@ -34,6 +34,7 @@ export type WhatsappMessage = {
   text_message: string | null;
   country_code: string;
   status: WhatsappStatus | null;
+  media_url: string | null;
 };
 
 const url = env.NEXT_PUBLIC_API_EXPRESS_URL + "/whatsapp";
@@ -137,6 +138,7 @@ export type WhatsappNotification = {
   environment: WhatsappEnvironment;
   country_code: string;
   status: WhatsappStatus | null;
+  media_url: string | null;
 };
 
 export const findWhatsappNotifications = async (

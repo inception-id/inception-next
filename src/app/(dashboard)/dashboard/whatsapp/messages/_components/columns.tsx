@@ -1,5 +1,8 @@
+import { buttonVariants } from "@/components/ui/button";
 import { WhatsappMessage } from "@/lib/api/whatsapp/client";
+import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
+import { LuEye } from "react-icons/lu";
 
 export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
   {
@@ -37,5 +40,24 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
   {
     header: "Text",
     accessorKey: "text_message",
+  },
+  {
+    header: "Attachment",
+    accessorKey: "media_url",
+    cell: ({ row }) => {
+      const mediaUrl = row.original.media_url;
+      if (mediaUrl) {
+        return (
+          <a
+            href={mediaUrl}
+            target="_blank"
+            className={cn(buttonVariants({ size: "icon" }))}
+          >
+            <LuEye />
+          </a>
+        );
+      }
+      return "-";
+    },
   },
 ];
