@@ -12,7 +12,8 @@ const singleCurlRequest = `
       "targetPhoneNumber": "812xxx",
       "message": "Hello World!",
       "environment": "DEVELOPMENT",
-      "countryCode": "62"
+      "countryCode": "62",
+      "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
   }'
 `;
 
@@ -27,13 +28,15 @@ const multiCurlRequest = `
       "targetPhoneNumber": "812xxx",
       "message": "Hello World!",
       "environment": "DEVELOPMENT",
-      "countryCode": "62"
+      "countryCode": "62",
+      "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
     },
     {
       "targetPhoneNumber": "817xxx",
       "message": "Hello World 2!",
       "environment": "DEVELOPMENT",
-      "countryCode": "62"
+      "countryCode": "62",
+      "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
     }
   ]'
 `;
@@ -75,6 +78,12 @@ const BODY = [
     description:
       "Development environment is the free version of Inception. If the message count has reached the monthly limit, the default will be PRODUCTION.",
   },
+  {
+    key: "mediaUrl (OPTIONAL)",
+    value: "Url link to media file",
+    description:
+      "Send message with media attachment, please ensure your link is valid and accessible.",
+  },
 ];
 
 const singleCurlResponse = `
@@ -88,7 +97,8 @@ const singleCurlResponse = `
           "text_message": "Hello World!",
           "environment": "DEVELOPMENT",
           "country_code": "62",
-          "status": "DELIVERED"
+          "status": "DELIVERED",
+          "media_url": null, // Will be string if mediaUrl is provided
       },
       "message": "DELIVERED"
   }
@@ -147,6 +157,11 @@ const JSON_DATA = [
     description:
       "DELIVERED means the message has been successfully delivered to the target phone number. PENDING means the message is in the scheduled queue still being processed and has not yet been delivered.",
   },
+  {
+    key: "media_url",
+    value: "string or null",
+    description: "Your request's media URL, will be null if no media is sent",
+  },
 ];
 
 export const NotificationContent = () => {
@@ -167,7 +182,7 @@ export const NotificationContent = () => {
       >
         2.1 Send one message/notification
       </h3>
-      <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+      <h4 className="scroll-m-20 text-xl font-semibold tracking-tight mt-8 mb-4">
         REQUEST
       </h4>
       <CurlCard code={singleCurlRequest} />

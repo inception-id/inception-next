@@ -16,7 +16,8 @@ const singleCurlRequest = `
       "targetPhoneNumber": "813xxx",
       "countryCode": "62",
       "environment": "DEVELOPMENT",
-      "sendNow": true
+      "sendNow": true,
+      "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
   }'
 `;
 
@@ -34,7 +35,8 @@ const multiCurlRequest = `
       "targetPhoneNumber": "813xxx",
       "countryCode": "62",
       "environment": "DEVELOPMENT",
-      "sendNow": true
+      "sendNow": true,
+      "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
     },
     {
       "whatsappPhoneId": "xxx-xxx-xxx",
@@ -43,7 +45,8 @@ const multiCurlRequest = `
       "targetPhoneNumber": "814xxx",
       "countryCode": "62",
       "environment": "DEVELOPMENT",
-      "sendNow": true
+      "sendNow": true,
+      "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
     }
   ]'
 `;
@@ -100,6 +103,12 @@ const BODY = [
     value: "boolean (Default: true)",
     description: "Whether to send the message immediately or not.",
   },
+  {
+    key: "mediaUrl (OPTIONAL)",
+    value: "Url link to media file",
+    description:
+      "Send message with media attachment, please ensure your link is valid and accessible.",
+  },
 ];
 
 const singleCurlResponse = `
@@ -114,7 +123,8 @@ const singleCurlResponse = `
           "text_message": "Hello World!",
           "environment": "DEVELOPMENT",
           "country_code": "62",
-          "status": "DELIVERED"
+          "status": "DELIVERED",
+          "media_url": null, // Will be string if mediaUrl is provided
       },
       "message": "DELIVERED"
   }
@@ -178,6 +188,11 @@ const JSON_DATA = [
     description:
       "DELIVERED means the message has been successfully delivered to the target phone number. PENDING means the message is in the scheduled queue still being processed and has not yet been delivered.",
   },
+  {
+    key: "media_url",
+    value: "string or null",
+    description: "Your request's media URL, will be null if no media is sent",
+  },
 ];
 
 export const MessageContent = () => {
@@ -228,7 +243,7 @@ export const MessageContent = () => {
         users can opt in to bypass our queue system with the <b>sendNow</b>{" "}
         parameter.
       </p>
-      <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">
+      <h4 className="scroll-m-20 text-xl font-semibold tracking-tight mt-8 mb-4">
         REQUEST
       </h4>
       <CurlCard code={singleCurlRequest} />
