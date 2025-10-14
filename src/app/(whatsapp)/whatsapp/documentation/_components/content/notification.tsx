@@ -11,7 +11,8 @@ const singleCurlRequest = `
   --data '{
       "targetPhoneNumber": "812xxx",
       "message": "Hello World!",
-      "environment": "DEVELOPMENT",
+      "sendNow": true,
+      "environment": "PRODUCTION",
       "countryCode": "62",
       "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
   }'
@@ -27,14 +28,14 @@ const multiCurlRequest = `
     {
       "targetPhoneNumber": "812xxx",
       "message": "Hello World!",
-      "environment": "DEVELOPMENT",
+      "environment": "PRODUCTION",
       "countryCode": "62",
       "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
     },
     {
       "targetPhoneNumber": "817xxx",
       "message": "Hello World 2!",
-      "environment": "DEVELOPMENT",
+      "environment": "PRODUCTION",
       "countryCode": "62",
       "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
     }
@@ -95,7 +96,7 @@ const singleCurlResponse = `
           "updated_at": "2025-09-27T01:27:10.606Z",
           "target_phone": "812xxx",
           "text_message": "Hello World!",
-          "environment": "DEVELOPMENT",
+          "environment": "PRODUCTION",
           "country_code": "62",
           "status": "DELIVERED",
           "media_url": null, // Will be string if mediaUrl is provided
@@ -145,6 +146,11 @@ const JSON_DATA = [
     value: "DEVELOPMENT or PRODUCTION (Default: DEVELOPMENT)",
     description:
       "Development environment is the free version of Inception. If the message count has reached the monthly limit, the default will be PRODUCTION.",
+  },
+  {
+    key: "sendNow (OPTIONAL)",
+    value: "boolean (Default: true)",
+    description: "Whether to send the message immediately or not.",
   },
   {
     key: "country_code",

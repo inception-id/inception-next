@@ -15,7 +15,7 @@ const singleCurlRequest = `
       "message": "Hello World!",
       "targetPhoneNumber": "813xxx",
       "countryCode": "62",
-      "environment": "DEVELOPMENT",
+      "environment": "PRODUCTION",
       "sendNow": true,
       "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
   }'
@@ -34,7 +34,7 @@ const multiCurlRequest = `
       "message": "Hello World!",
       "targetPhoneNumber": "813xxx",
       "countryCode": "62",
-      "environment": "DEVELOPMENT",
+      "environment": "PRODUCTION",
       "sendNow": true,
       "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
     },
@@ -44,7 +44,7 @@ const multiCurlRequest = `
       "message": "Hello World 2!",
       "targetPhoneNumber": "814xxx",
       "countryCode": "62",
-      "environment": "DEVELOPMENT",
+      "environment": "PRODUCTION",
       "sendNow": true,
       "mediaUrl": "https://example.com/image.jpg" (OPTIONAL: Use to send attachment)
     }
@@ -121,7 +121,7 @@ const singleCurlResponse = `
           "updated_at": "2025-09-27T01:27:10.606Z",
           "target_phone": "812xxx",
           "text_message": "Hello World!",
-          "environment": "DEVELOPMENT",
+          "environment": "PRODUCTION",
           "country_code": "62",
           "status": "DELIVERED",
           "media_url": null, // Will be string if mediaUrl is provided
