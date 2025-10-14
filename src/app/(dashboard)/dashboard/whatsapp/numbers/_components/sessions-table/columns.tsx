@@ -20,6 +20,14 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappSession>[] = [
     },
   },
   {
+    header: "Status",
+    accessorKey: "is_disconnected",
+    cell: ({ row }) => {
+      const isDisconnected = row.original.is_disconnected;
+      return isDisconnected ? "Disconnected" : "Connected";
+    },
+  },
+  {
     header: "",
     accessorKey: "is_ready",
     cell: ({ row }) => {

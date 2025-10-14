@@ -9,8 +9,10 @@ export type WhatsappSession = {
   updated_at: string;
   phone: string;
   is_ready: boolean;
+  is_deleted: boolean;
   hourly_limit: number;
   daily_limit: number;
+  is_disconnected: boolean;
 };
 
 export enum WhatsappEnvironment {
@@ -22,6 +24,7 @@ export enum WhatsappStatus {
   Pending = "PENDING",
   Delivered = "DELIVERED",
   Failed = "FAILED",
+  Disconnected = "WHATSAPP_DISCONNECTED",
 }
 
 export type WhatsappMessage = {
