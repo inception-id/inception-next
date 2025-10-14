@@ -74,6 +74,11 @@ const BODY = [
       "The country code of targetPhoneNumber, don't put the + prefix.",
   },
   {
+    key: "sendNow (OPTIONAL)",
+    value: "boolean (Default: true)",
+    description: "Whether to send the message immediately or not.",
+  },
+  {
     key: "environment (OPTIONAL)",
     value: "DEVELOPMENT or PRODUCTION (Default: DEVELOPMENT)",
     description:
@@ -146,11 +151,6 @@ const JSON_DATA = [
     value: "DEVELOPMENT or PRODUCTION (Default: DEVELOPMENT)",
     description:
       "Development environment is the free version of Inception. If the message count has reached the monthly limit, the default will be PRODUCTION.",
-  },
-  {
-    key: "sendNow (OPTIONAL)",
-    value: "boolean (Default: true)",
-    description: "Whether to send the message immediately or not.",
   },
   {
     key: "country_code",
