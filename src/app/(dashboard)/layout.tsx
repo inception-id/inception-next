@@ -1,6 +1,5 @@
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardSidebar, DashboardNavbar } from "./_layout";
-import type { Viewport } from "next";
 
 type LayoutProps = {
   children: React.ReactNode;

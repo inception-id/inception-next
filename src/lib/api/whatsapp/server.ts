@@ -1,5 +1,5 @@
 import { env } from "@/lib/env";
-import { ApiResponse, Pagination } from "../types";
+import { ApiResponse } from "../types";
 import { getTokenCookie } from "@/lib/cookies/get-token-cookie";
 import { WhatsappPayment } from "./types";
 
