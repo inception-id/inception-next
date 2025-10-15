@@ -46,10 +46,10 @@ export const SIDEBAR_ITEMS = [
     isBlank: false,
   },
   {
-    title: "Pricing",
-    url: "/whatsapp/pricing",
+    title: "Payments",
+    url: "/dashboard/whatsapp/payments",
     icon: LuDollarSign,
-    isBlank: true,
+    isBlank: false,
   },
   {
     title: "Documentation",

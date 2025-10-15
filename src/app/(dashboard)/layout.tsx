@@ -6,13 +6,6 @@ type LayoutProps = {
   children: React.ReactNode;
 };
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false, // Prevents users from zooming in/out
-};
-
 const Layout = ({ children }: LayoutProps) => {
   return (
     <SidebarProvider>
