@@ -1,12 +1,13 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   WhatsappPayment,
   WhatsappPaymentStatus,
 } from "@/lib/api/whatsapp/types";
-import { getMonthShortName } from "@/lib/utils";
+import { cn, getMonthShortName } from "@/lib/utils";
 import { countPricePerWhatsapp } from "@/lib/whatsapp";
 import { ColumnDef } from "@tanstack/react-table";
 import { PaymentButton } from "./payment-button";
+import Link from "next/link";
 
 export const TABLE_COLUMNS: ColumnDef<WhatsappPayment>[] = [
   {
@@ -81,11 +82,21 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappPayment>[] = [
     header: "",
     accessorKey: "paid_at",
     cell: ({ row }) => {
-      if (WhatsappPaymentStatus.PENDING) {
-        return <PaymentButton paymentId={row.original.id} />;
+      switch (row.original.payment_status) {
+        case WhatsappPaymentStatus.PENDING:
+          return <PaymentButton paymentId={row.original.id} />;
+        case WhatsappPaymentStatus.PAID:
+          return (
+            <Link
+              href={String(row.original.doku_response?.response.payment.url)}
+              className={cn(buttonVariants({ variant: "outline" }))}
+            >
+              See Billing
+            </Link>
+          );
+        default:
+          return <></>;
       }
-
-      return <></>;
     },
   },
 ];
