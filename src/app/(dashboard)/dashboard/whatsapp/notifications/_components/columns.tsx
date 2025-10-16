@@ -3,6 +3,7 @@ import { WhatsappNotification } from "@/lib/api/whatsapp/client";
 import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
 import { LuEye } from "react-icons/lu";
+import { WhatsappStatusText } from "../../_components";
 
 export const TABLE_COLUMNS: ColumnDef<WhatsappNotification>[] = [
   {
@@ -24,6 +25,10 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappNotification>[] = [
   {
     header: "Status",
     accessorKey: "status",
+    cell: ({ row }) => {
+      const status = row.original.status;
+      return <WhatsappStatusText status={status} />;
+    },
   },
   {
     header: "Country Code",

@@ -8,6 +8,7 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
+import { WhatsappStatusText } from "../../_components";
 
 export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
   {
@@ -30,23 +31,7 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
     header: "Status",
     accessorKey: "status",
     cell: ({ row }) => {
-      const status = row.original.status;
-      return status === WhatsappStatus.Disconnected ? (
-        <div className="flex items-center gap-1">
-          <span>DISCONNECTED</span>
-
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <LuInfo />
-            </TooltipTrigger>
-            <TooltipContent>
-              We could not connect to your Whatsapp Number
-            </TooltipContent>
-          </Tooltip>
-        </div>
-      ) : (
-        status
-      );
+      return <WhatsappStatusText status={row.original.status} />;
     },
   },
   {

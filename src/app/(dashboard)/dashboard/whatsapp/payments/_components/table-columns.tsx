@@ -47,11 +47,12 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappPayment>[] = [
     accessorKey: "amount",
     cell: ({ row }) => {
       const items = row.original.items;
+      const perUnitPrice = row.original.per_unit_price;
       const total = items.reduce((acc, item) => acc + item.value, 0);
       return (
         <div className="capitalize">
           {items.length > 0 && <div>Whatsapp Total: {total}</div>}
-          <div>Per Whatsapp Price: Rp {countPricePerWhatsapp(total)}</div>
+          <div>Per Whatsapp Price: Rp {perUnitPrice}</div>
           <div className="font-bold">
             Total: Rp {Number(row.original.amount).toLocaleString("id-ID")}
           </div>
