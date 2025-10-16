@@ -1,9 +1,9 @@
-import { ThemeToggle } from "@/components/custom-ui";
 import {
   Tooltip,
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
+import { ThemeToggle } from "@/components/custom-ui";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export const DashboardNavbar = () => {
@@ -13,7 +13,7 @@ export const DashboardNavbar = () => {
         <TooltipTrigger asChild>
           <SidebarTrigger />
         </TooltipTrigger>
-        <TooltipContent>Open/Close Sidebar</TooltipContent>
+        <TooltipContent>Toggle Sidebar</TooltipContent>
       </Tooltip>
       <ThemeToggle />
     </nav>

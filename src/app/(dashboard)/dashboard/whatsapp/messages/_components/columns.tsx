@@ -1,13 +1,9 @@
 import { buttonVariants } from "@/components/ui/button";
-import { WhatsappMessage, WhatsappStatus } from "@/lib/api/whatsapp/client";
+import { WhatsappMessage } from "@/lib/api/whatsapp/client";
 import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
-import { LuEye, LuInfo } from "react-icons/lu";
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-} from "@/components/ui/tooltip";
+import { LuEye } from "react-icons/lu";
+import { WhatsappStatusText } from "../../_components";
 
 export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
   {
@@ -30,23 +26,7 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
     header: "Status",
     accessorKey: "status",
     cell: ({ row }) => {
-      const status = row.original.status;
-      return status === WhatsappStatus.Disconnected ? (
-        <div className="flex items-center gap-1">
-          <span>DISCONNECTED</span>
-
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <LuInfo />
-            </TooltipTrigger>
-            <TooltipContent>
-              We could not connect to your Whatsapp Number
-            </TooltipContent>
-          </Tooltip>
-        </div>
-      ) : (
-        status
-      );
+      return <WhatsappStatusText status={row.original.status} />;
     },
   },
   {

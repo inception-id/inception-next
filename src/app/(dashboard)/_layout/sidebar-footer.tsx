@@ -11,6 +11,7 @@ import { useTransition } from "react";
 import { removeSession } from "@/lib/api/sessions";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { deleteSessionCookies } from "@/lib/cookies/delete-session-cookies";
 
 export const SidebarFooterMenu = () => {
   const { data, isLoading } = useJwtDataQuery();
@@ -29,6 +30,7 @@ export const SidebarFooterMenu = () => {
       } catch (error) {
         console.error("Error removing session:", error);
       } finally {
+        await deleteSessionCookies();
         router.push("/auth/login");
       }
     });

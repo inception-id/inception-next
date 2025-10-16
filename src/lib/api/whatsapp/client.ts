@@ -36,7 +36,7 @@ export type WhatsappMessage = {
   environment: WhatsappEnvironment;
   text_message: string | null;
   country_code: string;
-  status: WhatsappStatus | null;
+  status: WhatsappStatus;
   media_url: string | null;
 };
 
@@ -140,7 +140,7 @@ export type WhatsappNotification = {
   text_message: string | null;
   environment: WhatsappEnvironment;
   country_code: string;
-  status: WhatsappStatus | null;
+  status: WhatsappStatus;
   media_url: string | null;
 };
 
@@ -181,6 +181,7 @@ export type AllTimeWhatsappCount = {
   month: string;
   count: string;
   environment: WhatsappEnvironment;
+  status: WhatsappStatus;
 };
 
 export const countAllTimeWhatsappMessagesAndNotifications = async (): Promise<
