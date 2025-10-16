@@ -1,13 +1,8 @@
 import { buttonVariants } from "@/components/ui/button";
-import { WhatsappMessage, WhatsappStatus } from "@/lib/api/whatsapp/client";
+import { WhatsappMessage } from "@/lib/api/whatsapp/client";
 import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
-import { LuEye, LuInfo } from "react-icons/lu";
-import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-} from "@/components/ui/tooltip";
+import { LuEye } from "react-icons/lu";
 import { WhatsappStatusText } from "../../_components";
 
 export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
