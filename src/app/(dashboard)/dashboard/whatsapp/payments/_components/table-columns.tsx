@@ -4,7 +4,6 @@ import {
   WhatsappPaymentStatus,
 } from "@/lib/api/whatsapp/types";
 import { cn, getMonthShortName } from "@/lib/utils";
-import { countPricePerWhatsapp } from "@/lib/whatsapp";
 import { ColumnDef } from "@tanstack/react-table";
 import { PaymentButton } from "./payment-button";
 import Link from "next/link";
