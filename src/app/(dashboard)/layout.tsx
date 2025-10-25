@@ -1,11 +1,8 @@
+import React from "react";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { DashboardSidebar, DashboardNavbar } from "./_layout";
 
-type LayoutProps = {
-  children: React.ReactNode;
-};
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider>
       <DashboardSidebar />

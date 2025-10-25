@@ -8,6 +8,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { generateWhatsappMetadata } from "@/lib/seo/whatsapp";
+
+export const metadata = generateWhatsappMetadata("/auth/register");
 
 const RegisterPage = () => {
   return (
