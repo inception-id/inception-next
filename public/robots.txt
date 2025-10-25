@@ -7,3 +7,5 @@ Host: https://inception.id/
 
 # Sitemaps
 Sitemap: https://inception.id/sitemap.xml
+
+Disallow: /dashboard

@@ -1,5 +1,8 @@
 import { WhatsappEnvironment } from "@/lib/api/whatsapp/client";
 import { countPricePerWhatsapp } from "@/lib/whatsapp";
+import { generateMetadata } from "./_lib/metadata";
+
+export const metadata = generateMetadata();
 
 const PricingTable = () => {
   return (

@@ -1,4 +1,7 @@
 import { LoginCard } from "./_components";
+import { generateWhatsappMetadata } from "@/lib/seo/whatsapp";
+
+export const metadata = generateWhatsappMetadata("/auth/login");
 
 type LoginPageProps = {
   searchParams: Promise<{ t?: string }>;

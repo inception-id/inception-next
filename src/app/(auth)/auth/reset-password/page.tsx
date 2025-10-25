@@ -8,6 +8,9 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ResetPasswordEmailForm, ResetPasswordForm } from "./_components";
+import { generateWhatsappMetadata } from "@/lib/seo/whatsapp";
+
+export const metadata = generateWhatsappMetadata("/auth/register");
 
 type ResetPasswordPageProps = {
   searchParams: Promise<{
