@@ -1,18 +1,6 @@
 "use client";
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { getCoreRowModel, useReactTable } from "@tanstack/react-table";
 import { TABLE_COLUMNS } from "./columns";
-import {
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-  TableHeader,
-} from "@/components/ui/table";
 import { WhatsappNotification } from "@/lib/api/whatsapp/client";
 import { DashboardTable } from "@/app/(dashboard)/_components";
 

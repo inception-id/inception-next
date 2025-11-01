@@ -1,5 +1,4 @@
 import {
-  Sidebar,
   SidebarContent,
   SidebarMenu,
   SidebarMenuItem,
