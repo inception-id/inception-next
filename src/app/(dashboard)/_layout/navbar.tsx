@@ -5,6 +5,7 @@ import {
 } from "@/components/ui/tooltip";
 import { ThemeToggle } from "@/components/custom-ui";
 import { SidebarTrigger } from "@/components/ui/sidebar";
+import Link from "next/link";
 
 export const DashboardNavbar = () => {
   return (
@@ -15,7 +16,12 @@ export const DashboardNavbar = () => {
         </TooltipTrigger>
         <TooltipContent>Toggle Sidebar</TooltipContent>
       </Tooltip>
-      <ThemeToggle />
+      <Link href="/whatsapp/dashboard" title="Inception" className="md:hidden">
+        INCEPTION
+      </Link>
+      <div className="md:block">
+        <ThemeToggle />
+      </div>
     </nav>
   );
 };
