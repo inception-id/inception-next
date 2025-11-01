@@ -6,7 +6,9 @@ import {
   SidebarMenuButton,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LuBook, LuDollarSign, LuHouse, LuKey } from "react-icons/lu";
 import {
   MdOutlineMessage,
@@ -61,6 +63,7 @@ const SIDEBAR_ITEMS = [
 
 export const Content = () => {
   const { setOpenMobile } = useSidebar();
+  const pathname = usePathname();
   return (
     <SidebarContent>
       <SidebarMenu>
@@ -72,7 +75,10 @@ export const Content = () => {
                 title={item.title}
                 onClick={() => setOpenMobile(false)}
                 target={item.isBlank ? "_blank" : "_self"}
-                className="mx-auto"
+                className={cn(
+                  "mx-auto",
+                  pathname === item.url && "bg-sidebar-foreground text-sidebar",
+                )}
               >
                 <item.icon />
                 <span>{item.title}</span>

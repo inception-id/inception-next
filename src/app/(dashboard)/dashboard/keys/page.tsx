@@ -4,7 +4,7 @@ import { TableLoading } from "@/components/custom-ui";
 
 const ApiKeysPage = () => {
   return (
-    <div className="p-4 flex flex-col gap-4">
+    <div className="p-4 flex flex-col gap-4 container">
       <div className="flex items-center justify-between">
         <h1 className="text-lg font-bold">API Keys</h1>
         <CreateDialog />

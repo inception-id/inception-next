@@ -10,7 +10,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <SidebarProvider defaultOpen={defaultOpen}>
       <DashboardSidebar />
-      <main className="w-full h-screen flex flex-col">
+      <main className="w-full h-screen flex flex-col overflow-hidden">
         <DashboardNavbar />
         <div className="w-full flex-1">{children}</div>
       </main>

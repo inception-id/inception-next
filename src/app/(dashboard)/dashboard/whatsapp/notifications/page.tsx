@@ -12,8 +12,8 @@ const WhatsappNotifications = async ({
 }: WhatsappNotificationsProps) => {
   const pageSearchParams = await searchParams;
   return (
-    <div className="p-4 flex flex-col gap-4 overflow-x-auto">
-      <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+    <div className="p-4 flex flex-col gap-4 overflow-x-auto container ">
+      <div className="flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
         <div className="flex flex-col justify-start">
           <h1 className="text-lg font-bold">Sent Notifications</h1>
           <h2 className="text-xs">Messages sent via Inception number</h2>

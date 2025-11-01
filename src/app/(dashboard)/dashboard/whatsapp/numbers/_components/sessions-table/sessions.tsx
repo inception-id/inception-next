@@ -5,7 +5,7 @@ export const Sessions = async () => {
   const sessions = await findWhatsappSessions();
 
   return (
-    <div className="w-full h-[34rem] sm:h-[50rem] overflow-y-auto">
+    <div className="w-full h-[30rem] sm:h-[48rem] overflow-y-auto flex flex-col gap-2">
       <SessionTable data={sessions.data} />
     </div>
   );

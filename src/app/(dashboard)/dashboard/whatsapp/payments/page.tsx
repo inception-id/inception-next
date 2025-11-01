@@ -5,7 +5,7 @@ import { PaymentsTable } from "./_components";
 
 export default function PaymentsPage() {
   return (
-    <div className="p-4 flex flex-col gap-4 h-full">
+    <div className="p-4 flex flex-col gap-4 container overflow-x-auto">
       <div className="flex flex-col gap-2">
         <h1 className="text-xl font-bold">Billing &amp; Payments</h1>
         <h2 className="text-sm">

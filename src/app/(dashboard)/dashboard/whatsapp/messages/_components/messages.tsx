@@ -13,7 +13,7 @@ export const Messages = async ({ searchParams }: MessagesProps) => {
   const messages = await findWhatsappMessages(searchParams);
 
   return (
-    <div className="w-full h-[28rem] sm:h-[44rem] overflow-y-auto flex flex-col gap-2">
+    <div className="w-full h-[30rem] sm:h-[48rem] overflow-y-auto flex flex-col gap-2">
       <MessageTable data={messages.data.messages} />
       <PageFilter
         totalPages={messages.data.pagination.totalPages}
