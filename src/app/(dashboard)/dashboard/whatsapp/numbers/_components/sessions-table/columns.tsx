@@ -21,15 +21,15 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappSession>[] = [
   },
   {
     header: "Status",
-    accessorKey: "is_disconnected",
+    accessorKey: "is_ready",
     cell: ({ row }) => {
-      const isDisconnected = row.original.is_disconnected;
-      return isDisconnected ? "Disconnected" : "Connected";
+      const isReady = row.original.is_ready;
+      return isReady ? "Connected" : "Disconnected";
     },
   },
   {
     header: "",
-    accessorKey: "is_ready",
+    accessorKey: "is_deleted",
     cell: ({ row }) => {
       return <DeleteDialog session={row.original} />;
     },
