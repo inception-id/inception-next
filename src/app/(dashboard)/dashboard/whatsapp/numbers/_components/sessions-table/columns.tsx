@@ -4,11 +4,15 @@ import { DeleteDialog } from "./delete-dialog";
 
 export const TABLE_COLUMNS: ColumnDef<WhatsappSession>[] = [
   {
-    header: "Whatsapp Number ID",
+    header: "ID",
     accessorKey: "id",
   },
   {
-    header: "Phone Number",
+    header: "Name",
+    accessorKey: "name",
+  },
+  {
+    header: "Phone",
     accessorKey: "phone",
   },
   {

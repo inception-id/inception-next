@@ -12,6 +12,7 @@ export type WhatsappSession = {
   is_deleted: boolean;
   hourly_limit: number;
   daily_limit: number;
+  name: string;
 };
 
 export enum WhatsappEnvironment {
@@ -42,7 +43,7 @@ export type WhatsappMessage = {
 const url = env.NEXT_PUBLIC_API_EXPRESS_URL + "/whatsapp";
 
 export const createWhatsappSession = async (
-  phone: string,
+  name: string,
 ): Promise<ApiResponse<{ qr: string }>> => {
   try {
     const token = (await getTokenCookie()) as string;
@@ -52,7 +53,7 @@ export const createWhatsappSession = async (
         "x-access-token": token,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ phone }),
+      body: JSON.stringify({ name }),
     });
     return res.json();
   } catch (error) {

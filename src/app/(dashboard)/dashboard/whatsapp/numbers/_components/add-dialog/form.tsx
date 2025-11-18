@@ -18,10 +18,7 @@ import { toast } from "sonner";
 import { useAddWhatsappStore } from "../../_hooks";
 
 const formSchema = z.object({
-  phone: z
-    .string()
-    .min(1, "Phone number can not be empty")
-    .transform((s) => (s.startsWith("0") ? s.slice(1) : s)),
+  name: z.string().min(1, "Device name can't be empty"),
 });
 
 export const AddWhatsappForm = () => {
@@ -30,14 +27,14 @@ export const AddWhatsappForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      phone: "",
+      name: "",
     },
   });
 
   const onSubmit = (values: z.infer<typeof formSchema>) => {
     startTransition(async () => {
       try {
-        const whatsappSession = await createWhatsappSession(values.phone);
+        const whatsappSession = await createWhatsappSession(values.name);
         if (whatsappSession.status === 201) {
           toggleQr(true, whatsappSession.data.qr);
         } else {
@@ -45,9 +42,7 @@ export const AddWhatsappForm = () => {
         }
       } catch (error) {
         console.error(error);
-        toast.error(
-          "Failed to create Whatsapp session, please try again later",
-        );
+        toast.error("Failed to register your number, please try again later");
       }
     });
   };
@@ -60,17 +55,12 @@ export const AddWhatsappForm = () => {
       >
         <FormField
           control={form.control}
-          name="phone"
+          name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Whatsapp Number</FormLabel>
+              <FormLabel>Device Name</FormLabel>
               <FormControl>
-                <Input
-                  {...field}
-                  placeholder="08..."
-                  type="number"
-                  className="[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                />
+                <Input {...field} placeholder="My Phone" type="text" />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -82,7 +72,7 @@ export const AddWhatsappForm = () => {
           disabled={isPending}
           className={cn("cursor-pointer", isPending && "animate-pulse")}
         >
-          {isPending ? "Checking, please wait..." : "Continue"}
+          {isPending ? "Generating QR code..." : "Next"}
         </Button>
       </form>
     </Form>

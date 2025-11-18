@@ -38,12 +38,10 @@ export const AddWhatsappDialog = () => {
         <LuPlus />
         <span>Add a Number</span>
       </DialogTrigger>
-      <DialogContent className={cn(showQr && "bg-white text-black")}>
+      <DialogContent className="bg-[#FCF5EB] text-black">
         <DialogHeader>
           <div className="flex items-center justify-between">
-            <DialogTitle className="text-left">
-              {showQr ? "Scan QR code" : "Add Whatsapp Number"}
-            </DialogTitle>
+            <DialogTitle>Steps to log in</DialogTitle>
             <DialogClose
               ref={dialogCloseRef}
               className={cn(buttonVariants({ variant: "ghost", size: "icon" }))}
@@ -51,11 +49,7 @@ export const AddWhatsappDialog = () => {
               <LuX />
             </DialogClose>
           </div>
-          <DialogDescription>
-            {showQr
-              ? "QR is valid for 30 seconds, phone number will show in the list once connected"
-              : ""}
-          </DialogDescription>
+          <DialogDescription />
         </DialogHeader>
         {showQr ? (
           <WhatsappQrCode closeDialog={() => dialogCloseRef.current?.click()} />
