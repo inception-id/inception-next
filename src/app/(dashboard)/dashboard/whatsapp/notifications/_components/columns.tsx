@@ -19,22 +19,6 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappNotification>[] = [
     },
   },
   {
-    header: "Environment",
-    accessorKey: "environment",
-  },
-  {
-    header: "Status",
-    accessorKey: "status",
-    cell: ({ row }) => {
-      const status = row.original.status;
-      return <WhatsappStatusText status={status} />;
-    },
-  },
-  {
-    header: "Country Code",
-    accessorKey: "country_code",
-  },
-  {
     header: "To",
     accessorKey: "target_phone",
   },
@@ -59,6 +43,19 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappNotification>[] = [
         );
       }
       return "-";
+    },
+  },
+
+  {
+    header: "Environment",
+    accessorKey: "environment",
+  },
+  {
+    header: "Status",
+    accessorKey: "status",
+    cell: ({ row }) => {
+      const status = row.original.status;
+      return <WhatsappStatusText status={status} />;
     },
   },
 ];

@@ -27,6 +27,11 @@ export enum WhatsappStatus {
   Disconnected = "WHATSAPP_DISCONNECTED",
 }
 
+export enum WhatsappMessageDirection {
+  INCOMING = "INCOMING",
+  OUTGOING = "OUTGOING",
+}
+
 export type WhatsappMessage = {
   id: string;
   session_id: string;
@@ -35,9 +40,10 @@ export type WhatsappMessage = {
   target_phone: string;
   environment: WhatsappEnvironment;
   text_message: string | null;
-  country_code: string;
   status: WhatsappStatus;
   media_url: string | null;
+  user_id: string;
+  direction: WhatsappMessageDirection;
 };
 
 const url = env.NEXT_PUBLIC_API_EXPRESS_URL + "/whatsapp";
@@ -139,7 +145,6 @@ export type WhatsappNotification = {
   target_phone: string;
   text_message: string | null;
   environment: WhatsappEnvironment;
-  country_code: string;
   status: WhatsappStatus;
   media_url: string | null;
 };

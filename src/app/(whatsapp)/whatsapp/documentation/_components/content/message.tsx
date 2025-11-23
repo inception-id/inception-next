@@ -122,7 +122,6 @@ const singleCurlResponse = `
           "target_phone": "812xxx",
           "text_message": "Hello World!",
           "environment": "PRODUCTION",
-          "country_code": "62",
           "status": "DELIVERED",
           "media_url": null, // Will be string if mediaUrl is provided
       },
@@ -176,11 +175,6 @@ const JSON_DATA = [
     value: "DEVELOPMENT or PRODUCTION (Default: DEVELOPMENT)",
     description:
       "Development environment is the free version of Inception. If the message count has reached the monthly limit, the default will be PRODUCTION.",
-  },
-  {
-    key: "country_code",
-    value: "The country code of targetPhoneNumber (Default: 62)",
-    description: "Your request's country code",
   },
   {
     key: "status",
