@@ -10,6 +10,11 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
     header: "ID",
     accessorKey: "id",
   },
+
+  {
+    header: "Whatsapp Number ID",
+    accessorKey: "session_id",
+  },
   {
     header: "Created At",
     accessorKey: "created_at",
@@ -17,25 +22,6 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
       const createdAt = new Date(row.getValue("created_at"));
       return <>{createdAt.toLocaleString("id-ID")}</>;
     },
-  },
-  {
-    header: "Environment",
-    accessorKey: "environment",
-  },
-  {
-    header: "Status",
-    accessorKey: "status",
-    cell: ({ row }) => {
-      return <WhatsappStatusText status={row.original.status} />;
-    },
-  },
-  {
-    header: "Whatsapp Number ID",
-    accessorKey: "session_id",
-  },
-  {
-    header: "Country Code",
-    accessorKey: "country_code",
   },
   {
     header: "To",
@@ -62,6 +48,18 @@ export const TABLE_COLUMNS: ColumnDef<WhatsappMessage>[] = [
         );
       }
       return "-";
+    },
+  },
+
+  {
+    header: "Environment",
+    accessorKey: "environment",
+  },
+  {
+    header: "Status",
+    accessorKey: "status",
+    cell: ({ row }) => {
+      return <WhatsappStatusText status={row.original.status} />;
     },
   },
 ];
